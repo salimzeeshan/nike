@@ -1,12 +1,23 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   Input,
   InputGroup,
   InputLeftElement,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { IoIosArrowForward } from "react-icons/io";
+import React, { useEffect, useState } from "react";
 
 const searchIcon = (
   <svg
@@ -25,6 +36,9 @@ const searchIcon = (
 );
 
 function Navbar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement, setPlacement] = useState("right");
+
   useEffect(() => {
     const input = document.querySelector(".input-small");
     const search = document.querySelector(".search-small");
@@ -48,7 +62,10 @@ function Navbar() {
   }, []);
 
   return (
-    <Flex justifyContent={"space-between"} alignItems={"center"} px={8}>
+    <Flex
+      className="navbar"
+      justifyContent={"space-between"}
+      alignItems={"center"}>
       <Box>
         <svg
           aria-hidden="true"
@@ -153,7 +170,7 @@ function Navbar() {
               d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5"></path>
           </svg>
         </Box>
-        <Box className="hamburger">
+        <Box onClick={onOpen} className="hamburger">
           <svg
             aria-hidden="true"
             class="pre-nav-design-icon"
@@ -169,6 +186,76 @@ function Navbar() {
               d="M21 5.25H3M21 12H3m18 6.75H3"></path>
           </svg>
         </Box>
+        <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent px={"10px"}>
+            <DrawerCloseButton size={"lg"} mr={"15px"} />
+            <DrawerHeader></DrawerHeader>
+            <DrawerBody mt={6}>
+              <Flex
+                mb={"15px"}
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Text as={"b"} fontSize={"3xl"}>
+                  Men
+                </Text>
+                <IoIosArrowForward size={"25px"} />
+              </Flex>
+              <Flex
+                mb={"15px"}
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Text as={"b"} fontSize={"3xl"}>
+                  Women
+                </Text>
+                <IoIosArrowForward size={"25px"} />
+              </Flex>
+              <Flex
+                mb={"15px"}
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Text as={"b"} fontSize={"3xl"}>
+                  Kids
+                </Text>
+                <IoIosArrowForward size={"25px"} />
+              </Flex>
+              <Flex
+                mb={"15px"}
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Text as={"b"} fontSize={"3xl"}>
+                  Accessories
+                </Text>
+                <IoIosArrowForward size={"25px"} />
+              </Flex>
+              <Flex
+                mb={"100px"}
+                w={"100%"}
+                alignItems={"center"}
+                justifyContent={"space-between"}>
+                <Text as={"b"} fontSize={"3xl"}>
+                  Sale
+                </Text>
+                <IoIosArrowForward size={"25px"} />
+              </Flex>
+              <Text color={"#757575"} mb={"30px"} fontSize={"2xl"}>
+                Become a Nike Member for the best products, inspiration and
+                stories in sport.{" "}
+                <a style={{color: "black"}} href="">
+                  <strong>Learn more</strong>
+                </a>
+              </Text>
+              <ButtonGroup>
+                <Button className="black-button" bgColor={"black"} color={"white"} borderRadius={"20px"} px={"25px"}>Join Us</Button>
+                <Button className="outline-button" variant={"outline"} borderRadius={"20px"} px={"25px"}>Sign In</Button>
+              </ButtonGroup>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </Flex>
     </Flex>
   );
