@@ -13,11 +13,14 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Stack,
   Text,
   useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const searchIcon = (
   <svg
@@ -66,29 +69,41 @@ function Navbar() {
       className="navbar"
       justifyContent={"space-between"}
       alignItems={"center"}>
-      <Box>
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          viewBox="0 0 24 24"
-          role="img"
-          width="80px"
-          height="80px"
-          fill="none">
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </Box>
+      <Link href={"/"}>
+        <Box>
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+            role="img"
+            width="80px"
+            height="80px"
+            fill="none">
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </Box>
+      </Link>
       <Box className="nav-links">
         <Flex as={"b"} gap={5}>
-          <Text cursor={"pointer"}>Men</Text>
-          <Text cursor={"pointer"}>Women</Text>
-          <Text cursor={"pointer"}>Kids</Text>
-          <Text cursor={"pointer"}>Accessories</Text>
-          <Text cursor={"pointer"}>Sale</Text>
+          <Link href={"/men"}>
+            <Text cursor={"pointer"}>Men</Text>
+          </Link>
+          <Link href={"/women"}>
+            <Text cursor={"pointer"}>Women</Text>
+          </Link>
+          <Link href={"/kids"}>
+            <Text cursor={"pointer"}>Kids</Text>
+          </Link>
+          <Link href={"/accessories"}>
+            <Text cursor={"pointer"}>Accessories</Text>
+          </Link>
+          <Link href={"/sale"}>
+            <Text cursor={"pointer"}>Sale</Text>
+          </Link>
         </Flex>
       </Box>
       <Flex alignItems={"center"} gap={5}>
@@ -189,70 +204,84 @@ function Navbar() {
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent px={"10px"}>
-            <DrawerCloseButton size={"lg"} mr={"15px"} />
+            <DrawerCloseButton autoFocus={"false"} size={"lg"} mr={"15px"} />
             <DrawerHeader></DrawerHeader>
             <DrawerBody mt={6}>
               <Flex
-                mb={"15px"}
-                w={"100%"}
-                alignItems={"center"}
-                justifyContent={"space-between"}>
-                <Text as={"b"} fontSize={"3xl"}>
-                  Men
-                </Text>
-                <IoIosArrowForward size={"25px"} />
-              </Flex>
-              <Flex
-                mb={"15px"}
-                w={"100%"}
-                alignItems={"center"}
-                justifyContent={"space-between"}>
-                <Text as={"b"} fontSize={"3xl"}>
-                  Women
-                </Text>
-                <IoIosArrowForward size={"25px"} />
-              </Flex>
-              <Flex
-                mb={"15px"}
-                w={"100%"}
-                alignItems={"center"}
-                justifyContent={"space-between"}>
-                <Text as={"b"} fontSize={"3xl"}>
-                  Kids
-                </Text>
-                <IoIosArrowForward size={"25px"} />
-              </Flex>
-              <Flex
-                mb={"15px"}
-                w={"100%"}
-                alignItems={"center"}
-                justifyContent={"space-between"}>
-                <Text as={"b"} fontSize={"3xl"}>
-                  Accessories
-                </Text>
-                <IoIosArrowForward size={"25px"} />
-              </Flex>
-              <Flex
+                gap={"8px"}
+                flexDirection={"column"}
                 mb={"100px"}
-                w={"100%"}
-                alignItems={"center"}
-                justifyContent={"space-between"}>
-                <Text as={"b"} fontSize={"3xl"}>
-                  Sale
-                </Text>
-                <IoIosArrowForward size={"25px"} />
+                fontSize={"2xl"}>
+                <Link href={"/men"}>
+                  <Flex
+                    onClick={onClose}
+                    w={"100%"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}>
+                    <Text as={"b"}>Men</Text>
+                    <IoIosArrowForward size={"25px"} />
+                  </Flex>
+                </Link>
+                <Link href={"/women"}>
+                  <Flex
+                    onClick={onClose}
+                    w={"100%"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}>
+                    <Text as={"b"}>Women</Text>
+                    <IoIosArrowForward size={"25px"} />
+                  </Flex>
+                </Link>
+                <Link href={"/kids"}>
+                  <Flex
+                    onClick={onClose}
+                    w={"100%"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}>
+                    <Text as={"b"}>Kids</Text>
+                    <IoIosArrowForward size={"25px"} />
+                  </Flex>
+                </Link>
+                <Link href={"/accessories"}>
+                  <Flex
+                    onClick={onClose}
+                    w={"100%"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}>
+                    <Text as={"b"}>Accessories</Text>
+                    <IoIosArrowForward size={"25px"} />
+                  </Flex>
+                </Link>
+                <Link href={"/sale"}>
+                  <Flex
+                    onClick={onClose}
+                    w={"100%"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}>
+                    <Text as={"b"}>Sale</Text>
+                    <IoIosArrowForward size={"25px"} />
+                  </Flex>
+                </Link>
               </Flex>
-              <Text color={"#757575"} mb={"30px"} fontSize={"2xl"}>
+              <Text color={"#757575"} as={"b"} fontSize={"xl"}>
                 Become a Nike Member for the best products, inspiration and
                 stories in sport.{" "}
-                <a style={{color: "black"}} href="">
+                <a style={{ color: "black" }} href="">
                   <strong>Learn more</strong>
                 </a>
               </Text>
-              <ButtonGroup>
-                <Button className="black-button" bgColor={"black"} color={"white"} borderRadius={"20px"} px={"25px"}>Join Us</Button>
-                <Button className="outline-button" variant={"outline"} borderRadius={"20px"} px={"25px"}>Sign In</Button>
+              <ButtonGroup mt={"30px"}>
+                <button
+                  className="black-button"
+                  bgColor={"black"}
+                  color={"white"}
+                  borderRadius={"20px"}
+                  px={"25px"}>
+                  Join Us
+                </button>
+                <button className="outline-button">Sign In</button>
               </ButtonGroup>
+              <Stack></Stack>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
