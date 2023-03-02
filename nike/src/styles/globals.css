@@ -263,7 +263,7 @@
   .grid-two{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 800px 800px;
+    grid-template-rows: 600px 600px;
   }
   .grid-two img{
     object-fit: cover;
@@ -309,7 +309,7 @@
     font-family: 'Tilt Warp', cursive;
     text-transform: uppercase;
     font-size: 50px;
-    line-height: 40px;
+    line-height: 60px;
   }
 }
 
