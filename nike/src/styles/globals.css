@@ -210,6 +210,10 @@
   gap: 30px;
 }
 
+.black-bg{
+  background-color: #111111;
+}
+
 .fancy-text{
   font-family: 'Tilt Warp', cursive;
   text-transform: uppercase;
@@ -217,58 +221,16 @@
   line-height: 50px;
 }
 
-@media only screen and (max-width: 820px) {
-  .nav-links{
-    display: none
-  }
-  .hamburger{
-    display: block;
-  }
-  .wishlist{
-    display: none;
-  }
-  .search{
-    display: none;
-  }
-  .search-small{
-    display: flex;
-  }
-  .search-icon{
-    display: block;
-  }
-  .navbar{
-    padding-left: 15px;
-    padding-right: var(--padding-sm);
-    height: 60px;
-  }
-  .home{
-    padding-left: var(--padding-sm);
-    padding-right: var(--padding-sm);
-  }
-  .grid-two-box{
-    position: absolute;
-    bottom: 0px;
-    left: var(--padding-sm);
-    bottom: var(--padding-sm);
-  }
+.footer-cta{
+  padding-left: var(--padding-lg);
 }
 
-@media only screen and (max-width: 600px){
-  .home-banner{
-    display: none;
-  }
-  .home-banner-small{
-    display: block;
-  }
-  .grid-two{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 600px 600px;
-  }
-  .grid-two img{
-    object-fit: cover;
-    height: 100%;
-  }
+.footer-lg{
+  display: flex;
+}
+
+.footer-sm{
+  display: none;
 }
 
 @media only screen and (max-width: 960px){
@@ -309,7 +271,73 @@
     font-family: 'Tilt Warp', cursive;
     text-transform: uppercase;
     font-size: 50px;
-    line-height: 60px;
+    line-height: 40px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .nav-links{
+    display: none
+  }
+  .hamburger{
+    display: block;
+  }
+  .wishlist{
+    display: none;
+  }
+  .search{
+    display: none;
+  }
+  .search-small{
+    display: flex;
+  }
+  .search-icon{
+    display: block;
+  }
+  .navbar{
+    padding-left: 15px;
+    padding-right: var(--padding-sm);
+    height: 60px;
+  }
+  .home{
+    padding-left: var(--padding-sm);
+    padding-right: var(--padding-sm);
+  }
+  .grid-two-box{
+    position: absolute;
+    bottom: 0px;
+    left: var(--padding-sm);
+    bottom: var(--padding-sm);
+  }
+  .footer-cta{
+    padding-left: var(--padding-sm);
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .home-banner{
+    display: none;
+  }
+  .home-banner-small{
+    display: block;
+  }
+  .grid-two{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 600px 600px;
+  }
+  .grid-two img{
+    object-fit: cover;
+    height: 100%;
+  }
+  .footer-lg{
+    display: none;
+  }
+  .footer-sm{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 700px;
   }
 }
 
