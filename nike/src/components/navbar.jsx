@@ -41,6 +41,7 @@ const searchIcon = (
 function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = useState("right");
+  const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
     const input = document.querySelector(".input-small");
@@ -62,10 +63,40 @@ function Navbar() {
       cancel.classList.add("cancel-active");
       console.log("HEYYY");
     });
+
+    const body = document.body;
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll <= 0) {
+        body.classList.remove("scroll-up");
+        return;
+      }
+
+      if (
+        currentScroll > lastScroll &&
+        !body.classList.contains("scroll-down")
+      ) {
+        body.classList.remove("scroll-up");
+        body.classList.add("scroll-down");
+      } else if (
+        currentScroll < lastScroll &&
+        body.classList.contains("scroll-down")
+      ) {
+        body.classList.remove("scroll-down");
+        body.classList.add("scroll-up");
+      }
+      lastScroll = currentScroll;
+    });
   }, []);
 
   return (
     <Flex
+      position={"sticky"}
+      backgroundColor={"white"}
+      width={"100%"}
+      mb={"20px"}
       className="navbar"
       justifyContent={"space-between"}
       alignItems={"center"}>
