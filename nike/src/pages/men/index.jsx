@@ -1,18 +1,23 @@
-import Banner from "@/components/banner";
-import FooterCTA from "/Users/zeeshansalim/Desktop/nike/nike/src/components/FooterCTA";
 import ScrollGrid from "@/components/ScrollGrid";
 import TwoGrid from "@/components/TwoGrid";
 import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import Link from "next/link";
+import FooterCTA from "@/components/FooterCTA";
+import Banner from "@/components/Banner";
 
 function Men() {
   return (
     <Box>
-      <Flex zIndex={"999"} w={"100%"} bgColor="white" h={"60px"} position="sticky" top={"0"} >
-        <Flex
-          transition="300ms ease"
-          className="nav-men">
+      <Flex
+        zIndex={"999"}
+        w={"100%"}
+        bgColor="white"
+        h={"max-content"}
+        py={4}
+        position="sticky"
+        top={"0"}>
+        <Flex transition="300ms ease" className="nav-men">
           <Text fontSize={"2xl"} fontWeight="bold">
             Men
           </Text>
