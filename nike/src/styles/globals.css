@@ -238,6 +238,21 @@
   padding-right: var(--padding-lg);
 }
 
+.nav-men{
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--padding-lg);
+  padding-right: var(--padding-lg);
+}
+
+@media only screen and (max-width: 972px){
+  .nav-men{
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 960px){
   .banner-container{
     text-align: left;
@@ -316,6 +331,15 @@
   }
   .footer-cta{
     padding-left: var(--padding-sm);
+  }
+  .nav-men{
+    padding-left: var(--padding-sm);
+    padding-right: var(--padding-sm);
+  }
+  .nav-men{
+    align-items: start;
+    gap: 20px;
+    flex-direction: column;
   }
 }
 

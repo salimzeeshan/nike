@@ -172,7 +172,7 @@ function Footer() {
           <Box
             className={"footer-b"}
             as={Stack}
-            maxW={"6xl"}
+            // maxW={"6xl"}
             py={1}
             color={"gray"}
             spacing={4}
