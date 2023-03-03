@@ -247,6 +247,28 @@
   padding-right: var(--padding-lg);
 }
 
+.filters{
+  width: 30%;
+  border: 1px solid black;
+  transition: 300ms ease;
+}
+
+.filters-hide{
+  position: absolute;
+  transform: translateX(-600%);
+}
+
+.products{
+  width: 70%;
+  border: 1px solid black;
+  transition: 300ms ease;
+  transform-origin: top;
+}
+
+.products-full{
+  width: 100%;
+}
+
 @media only screen and (max-width: 972px){
   .nav-men{
     width: 100%;
