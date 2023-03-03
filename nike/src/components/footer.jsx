@@ -41,12 +41,23 @@ const ListHeader = ({ children }) => {
 function Footer() {
   return (
     <Box
+      className={"footer"}
       fontSize={"sm"}
       mt={"30px"}
+      width={"100%"}
       bg={useColorModeValue("#111111", "white")}
       color={useColorModeValue("white", "black")}>
-      <Container as={Stack} maxW={"6xl"} py={8}>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+      <Box
+        as={Stack}
+        width={"100%"}
+        py={8}
+        justifyContent={"space-between"}
+        display={"flex"}>
+        <SimpleGrid
+          justifyContent={"space-between"}
+          gap={{ base: "40px", md: "0px" }}
+          columns={{ base: 1, sm: 2, md: 4 }}
+          width={"100%"}>
           <Stack
             spacing={4}
             align={"flex-start"}
@@ -54,7 +65,7 @@ function Footer() {
             textTransform={"uppercase"}>
             <Link href={"#"}>GIFT CARDS</Link>
             <Link href={"#"}>PROMOTIONS</Link>
-            <Link href={"#"}>FIND A STORES</Link>
+            <Link href={"#"}>FIND A STORE</Link>
             <Link href={"#"}>SIGN UP FOR EMAIL</Link>
             <Link href={"#"}>BECOME A MEMBER</Link>
             <Link href={"#"}>NIKE JOURNAL</Link>
@@ -66,7 +77,7 @@ function Footer() {
               <Link href={"#"}>Order Status</Link>
               <Link href={"#"}>Shipping and Delivery</Link>
               <Link href={"#"}>Returns</Link>
-              <Link href={"#"}>Payment Options Us</Link>
+              <Link href={"#"}>Payment Options</Link>
               <Link href={"#"}>Gift Card Balance</Link>
               <Link href={"#"}>Contact Us</Link>
             </Stack>
@@ -81,8 +92,17 @@ function Footer() {
               <Link href={"#"}>Sustainability</Link>
             </Stack>
           </Stack>
-          <Stack align={"flex-start"}>
-            <Stack gap={2} color={"gray"} direction={"row"}>
+          <Flex
+            display={"flex"}
+            justifyContent={{ base: "start", md: "end" }}
+            width={"100%"}>
+            <Stack
+              width={"70%"}
+              minW={"200px"}
+              justifyContent={"space-between"}
+              gap={2}
+              color={"gray"}
+              direction={"row"}>
               <Link href={"#"}>
                 <svg
                   class="social-link-icon"
@@ -124,9 +144,9 @@ function Footer() {
                 </svg>
               </Link>
             </Stack>
-          </Stack>
+          </Flex>
         </SimpleGrid>
-      </Container>
+      </Box>
       <Box py={10}>
         <Flex
           align={"center"}
@@ -149,15 +169,39 @@ function Footer() {
         <Box
           bg={useColorModeValue("#111", "white")}
           color={useColorModeValue("white", "#111")}>
-          <Container
+          <Box
+            className={"footer-b"}
             as={Stack}
             maxW={"6xl"}
-            py={4}
+            py={1}
+            color={"gray"}
             spacing={4}
-            justify={{ base: "center", md: "center" }}
-            align={{ base: "center", md: "center" }}>
-            <Text color={"gray"}>© 2023 Nike, Inc. All rights reserved</Text>
-          </Container>
+            direction={{ base: "column", md: "row" }}
+            justify={{ base: "start", md: "space-between" }}
+            align={{ base: "left", md: "center" }}>
+            <Flex
+              direction={{ base: "row", md: "column" }}
+              justifyContent={"end"}
+              gap={"15px"}
+              textAlign={"right"}>
+              <Stack visibility={"hidden"} direction={"row"}>
+                <Text> d</Text>
+                <Text>d </Text>
+                <Text> d</Text>
+                <Text>d </Text>
+              </Stack>
+              <Text>© 2023 Nike, Inc. All rights reserved</Text>
+            </Flex>
+            <Flex direction={"column"} gap={"15px"} textAlign={"right"}>
+              <Stack direction={{ base: "column", md: "row" }}>
+                <Text>Guides</Text>
+                <Text>Terms of Sale</Text>
+                <Text>Terms of use</Text>
+                <Text>Nike Privacy Policy</Text>
+              </Stack>
+              <Text>CA Supply Chains Act</Text>
+            </Flex>
+          </Box>
         </Box>
       </Box>
     </Box>

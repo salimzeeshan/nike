@@ -233,6 +233,11 @@
   display: none;
 }
 
+.footer{
+  padding-left: var(--padding-lg);
+  padding-right: var(--padding-lg);
+}
+
 @media only screen and (max-width: 960px){
   .banner-container{
     text-align: left;
@@ -338,6 +343,9 @@
     flex-direction: column;
     justify-content: end;
     height: 700px;
+  }
+  .footer-b{
+    text-align: left;
   }
 }
 
