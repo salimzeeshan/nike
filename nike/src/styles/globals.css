@@ -249,24 +249,28 @@
 
 .filters{
   width: 30%;
-  border: 1px solid black;
   transition: 300ms ease;
+  position: absolute;
 }
 
 .filters-hide{
-  position: absolute;
-  transform: translateX(-600%);
+  transform: translateX(-200%);
 }
 
 .products{
-  width: 70%;
-  border: 1px solid black;
+  width: 68%;
   transition: 300ms ease;
-  transform-origin: top;
+  transform-origin: right right;
+  position: absolute;
+  right: 0;
 }
 
 .products-full{
   width: 100%;
+}
+
+.dummy-div{
+  height: 100vh;
 }
 
 @media only screen and (max-width: 972px){
@@ -363,6 +367,10 @@
     gap: 20px;
     flex-direction: column;
   }
+  .footer{
+    padding-left: var(--padding-sm);
+    padding-right: var(--padding-sm);
+  }  
 }
 
 @media only screen and (max-width: 600px){
