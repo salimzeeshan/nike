@@ -23,9 +23,9 @@ function MenShoes() {
 
   useEffect(() => {
     axios
-      .get("https://dead-erin-coral-yoke.cyclic.app/men/shoes")
+      .get("/men/shoes")
       .then(function (response) {
-        return response;
+        console.log(response)
       })
       .catch(function (error) {
         console.log(error);
@@ -37,7 +37,6 @@ function MenShoes() {
     const products = document.querySelector(".products");
     const home = document.querySelector(".home");
     const data_id = home.getAttribute("data-filters");
-    console.log(data_id);
 
     if (data_id == "false") {
       filters.classList.add("filters-hide");
