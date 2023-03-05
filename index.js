@@ -10,14 +10,14 @@ const main = () => {
     mongoose.connect(database)
 }
 
-app.listen(4545, async () => {
+app.listen(2080, async () => {
     try {
         await main()
         console.log("Connected to the database successfully")
     } catch (error) {
         console.log(error)
     }
-    console.log("Port: 4545")
+    console.log("Port: 2080")
 })
 
 app.use('/', router)
