@@ -5,6 +5,8 @@ const app = express()
 const router = require('./routes/productRoutes')
 const database = 'mongodb+srv://zeeshansalim:456123@nike-products.shrdb01.mongodb.net/nike?retryWrites=true&w=majority'
 
+app.use(cors())
+
 const main = () => { 
     mongoose.connect(database)
 }
@@ -20,5 +22,3 @@ app.listen(2080, async (req, res) => {
 })
 
 app.use('/', router)
-app.use(cors())
-
