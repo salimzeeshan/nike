@@ -23,7 +23,7 @@ function MenShoes() {
 
   useEffect(() => {
     axios
-      .get("/men/shoes")
+      .get("https://dead-erin-coral-yoke.cyclic.app/men/shoes")
       .then(function (response) {
         console.log(response)
       })

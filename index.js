@@ -3,9 +3,6 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const router = require('./routes/productRoutes')
-
-app.use(cors())
-
 const database = 'mongodb+srv://zeeshansalim:456123@nike-products.shrdb01.mongodb.net/nike?retryWrites=true&w=majority'
 
 const main = () => { 
@@ -23,4 +20,5 @@ app.listen(2080, async (req, res) => {
 })
 
 app.use('/', router)
+app.use(cors())
 
