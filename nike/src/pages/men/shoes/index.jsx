@@ -1,23 +1,35 @@
 import { Box, filter, Flex, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BsFilterRight } from "react-icons/bs";
+
+const fetchData = () => {
+  axios
+    .get("https://dead-erin-coral-yoke.cyclic.app/men/shoes")
+    .then(function (response) {
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
 function MenShoes() {
   const [hide, setHide] = useState(false);
 
   const getData = async () => {
-    try {
-      let res = await fetch("https://cyan-sleepy-oyster.cyclic.app/men/shoes");
-      res = await res.json();
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
+    var data = await fetchData();
+    console.log(data);
   };
 
   useEffect(() => {
-    getData();
+    axios
+      .get("https://dead-erin-coral-yoke.cyclic.app/men/shoes")
+      .then(function (response) {
+        return response;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
   const handleFilter = () => {

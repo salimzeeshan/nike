@@ -11,6 +11,7 @@ const main = () => {
 }
 
 app.listen(2080, async () => {
+    res.header("Access-Control-Allow-Origin", "*")
     try {
         await main()
         console.log("Connected to the database successfully")
