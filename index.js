@@ -10,7 +10,7 @@ const main = () => {
     mongoose.connect(database)
 }
 
-app.listen(2080, async () => {
+app.listen(2080, async (req, res) => {
     res.header("Access-Control-Allow-Origin", "*")
     try {
         await main()
