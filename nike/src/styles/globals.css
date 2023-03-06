@@ -417,6 +417,7 @@
   }
   .product-title-sm{
     display: block;
+    font-size: 22px;
   }
   .product-title-lg{
     display: none;

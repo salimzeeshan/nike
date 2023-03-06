@@ -2787,7 +2787,7 @@ function MenShoes() {
         <Text className="product-title-lg" fontWeight={"bold"} fontSize={"3xl"}>
           Men's Shoes & Sneakers ({varData.length})
         </Text>
-        <Text className="product-title-sm" fontWeight={"bold"} fontSize={"3xl"}>
+        <Text className="product-title-sm" fontWeight={"bold"}>
           Men's Shoes & Sneakers
         </Text>
 
@@ -3024,7 +3024,7 @@ function MenShoes() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box>
+                <Box key={item._id}>
                   <Image
                     mb={2}
                     src={item.image === invalidImage ? placeholder : item.image}
@@ -3055,7 +3055,7 @@ function MenShoes() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box>
+                <Box key={item._id}>
                   <Image
                     mb={2}
                     src={item.image === invalidImage ? placeholder : item.image}
