@@ -2633,7 +2633,6 @@ function MenShoes() {
   const [products, setProducts] = useState(dummy);
   const [varData, setVarData] = useState(dummy);
   const [activeFilter, setActiveFilter] = useState("all");
-  const [value, setValue] = useState("1");
 
   const getData = async () => {
     var data = await fetchData();
@@ -2697,12 +2696,33 @@ function MenShoes() {
   };
 
   const handleRadio = (query) => {
-    let data = [...varData];
+    let data = [...products];
     const button = document.querySelector(`.${query}`);
     button.checked = true;
 
+    if (activeFilter !== "all") {
+      data = data.filter((item) => {
+        return (
+          item.title.toLowerCase().split(" ").includes(activeFilter) ||
+          item.subtitle.toLowerCase().split(" ").includes(activeFilter)
+        );
+      });
+    }
+
+    console.log(data);
+
     if (query === "all") {
-      setVarData(products);
+      if (activeFilter === "all") {
+        setVarData(products);
+        return;
+      }
+      data = products.filter((item) => {
+        return (
+          item.title.toLowerCase().split(" ").includes(activeFilter) ||
+          item.subtitle.toLowerCase().split(" ").includes(activeFilter)
+        );
+      });
+      setVarData(data);
       return;
     }
 
@@ -2764,11 +2784,15 @@ function MenShoes() {
         alignItems="center"
         justifyContent="space-between"
         mb={"20px"}>
-        <Text fontWeight={"bold"} fontSize={"3xl"}>
+        <Text className="product-title-lg" fontWeight={"bold"} fontSize={"3xl"}>
           Men's Shoes & Sneakers ({varData.length})
         </Text>
+        <Text className="product-title-sm" fontWeight={"bold"} fontSize={"3xl"}>
+          Men's Shoes & Sneakers
+        </Text>
+
         <Flex gap={4}>
-          <Flex
+          <Box
             gap={2}
             cursor={"pointer"}
             onClick={handleFilter}
@@ -2803,40 +2827,117 @@ function MenShoes() {
                 d="M16.5 13.5v0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"
                 clip-rule="evenodd"></path>
             </svg>
-          </Flex>
-          <Menu>
-            <MenuButton
-              border="none"
-              px={4}
-              py={2}
-              transition="all 0.2s"
-              borderRadius="md">
-              <Flex alignItems={"center"} gap={2}>
-                Sort by <FiChevronDown />
-              </Flex>
-            </MenuButton>
-            <MenuList>
-              <MenuItem
-                onClick={() => handleSort("hightolow")}
-                _hover={{ bg: "transparent" }}>
-                Price: High-Low
-              </MenuItem>
-              <MenuItem
-                onClick={() => handleSort("lowtohigh")}
-                _hover={{ bg: "transparent" }}>
-                Price: Low-High
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          </Box>
+          <Box className={"sort-lg"}>
+            <Menu>
+              <MenuButton
+                border="none"
+                py={2}
+                transition="all 0.2s"
+                borderRadius="md">
+                <Flex alignItems={"center"} gap={2}>
+                  Sort by <FiChevronDown />
+                </Flex>
+              </MenuButton>
+              <MenuList>
+                <MenuItem
+                  onClick={() => handleSort("hightolow")}
+                  _hover={{ bg: "transparent" }}>
+                  Price: High-Low
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleSort("lowtohigh")}
+                  _hover={{ bg: "transparent" }}>
+                  Price: Low-High
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
         </Flex>
       </Flex>
+
+      <Box mb={4} className="filters-sm">
+        <Flex
+          whiteSpace={"nowrap"}
+          w={"100%"}
+          overflow={"scroll"}
+          className="filter-tag"
+          flexDirection={"row"}
+          gap={6}
+          fontSize={"lg"}
+          fontWeight={"bold"}
+          cursor={"pointer"}>
+          <Text
+            className={activeFilter === "all" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("all")}>
+            All
+          </Text>
+          <Text
+            className={activeFilter === "jordan" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("jordan")}>
+            Jordan
+          </Text>
+          <Text
+            className={activeFilter === "running" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("running")}>
+            Running
+          </Text>
+          <Text
+            className={activeFilter === "training" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("training")}>
+            Training
+          </Text>
+          <Text
+            className={activeFilter === "soccer" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("soccer")}>
+            Soccer
+          </Text>
+          <Text
+            className={activeFilter === "skate" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("skate")}>
+            Skateboarding
+          </Text>
+          <Text
+            className={activeFilter === "100" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("100")}>
+            Shoes $100 & Under
+          </Text>
+        </Flex>
+      </Box>
+
+      <Box className="sort-sm" >
+        <Text fontSize={"lg"} color={"gray"}>{varData.length} Results</Text>
+        <Menu>
+          <MenuButton
+            border="none"
+            py={2}
+            transition="all 0.2s"
+            borderRadius="md">
+            <Flex alignItems={"center"} gap={2}>
+              Sort by <FiChevronDown />
+            </Flex>
+          </MenuButton>
+          <MenuList>
+            <MenuItem
+              onClick={() => handleSort("hightolow")}
+              _hover={{ bg: "transparent" }}>
+              Price: High-Low
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleSort("lowtohigh")}
+              _hover={{ bg: "transparent" }}>
+              Price: Low-High
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Box>
 
       <Flex
         position={"relative"}
         width={"100%"}
         className="product-container"
         gap={"30px"}>
-        <Flex flexDirection={"column"} className="filters">
+        <Box flexDirection={"column"} className="filters">
           <Flex
             className="filter-tag"
             flexDirection={"column"}
@@ -2918,12 +3019,12 @@ function MenShoes() {
               </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        </Box>
         <Box className="products">
-          <Grid gridTemplateColumns={"repeat(3, 1fr)"} columnGap={4} rowGap={6}>
+          <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <GridItem>
+                <Box>
                   <Image
                     mb={2}
                     src={item.image === invalidImage ? placeholder : item.image}
@@ -2942,19 +3043,19 @@ function MenShoes() {
                   <button className="black-button add-to-cart">
                     ADD TO CART
                   </button>
-                </GridItem>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
         </Box>
       </Flex>
 
       <Flex width={"100%"} className="product-container dummy-div" gap={"30px"}>
-        <Box className="products-dummy">
-          <Grid gridTemplateColumns={"repeat(3, 1fr)"} columnGap={4} rowGap={6}>
+        <Box w={"100%"} className="products-dummy">
+          <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <GridItem>
+                <Box>
                   <Image
                     mb={2}
                     src={item.image === invalidImage ? placeholder : item.image}
@@ -2973,10 +3074,10 @@ function MenShoes() {
                   <button className="black-button add-to-cart">
                     ADD TO CART
                   </button>
-                </GridItem>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
         </Box>
       </Flex>
     </Box>
