@@ -2777,7 +2777,7 @@ function MenShoes() {
   };
 
   return (
-    <Box data-filters="false" className="home" mt={"50px"}>
+    <Box data-filters="false" className="home" mt={"20px"}>
       <Flex
         py={"10px"}
         w={"100%"}
