@@ -3,12 +3,20 @@ import FooterCTA from "@/components/FooterCTA";
 import ScrollGrid from "@/components/ScrollGrid";
 import TwoGrid from "@/components/TwoGrid";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
 function Women() {
   return (
     <Box mt={"30px"}>
+      <Head>
+        <title>Women's Shoes, Clothing & Bras</title>
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
+      </Head>
       <Flex
         zIndex={"999"}
         w={"100%"}
@@ -62,11 +70,10 @@ function Women() {
         </Box>
         <Box className="women-banner-text-sm">
           <Text fontSize={"50px"} lineHeight="40px" className="fancy-text">
-            Welcome to the <br /> women's event
+            Welcome to the women's event
           </Text>
           <Text>
-            From 3.6 to 3.11, we’ve got Member-exclusive drops, stories, a
-            <br /> special sale, and more. Shop the collection or check out the
+            From 3.6 to 3.11, we’ve got Member-exclusive drops, stories, a special sale, and more. Shop the collection or check out the
             lineup.
           </Text>
           <Flex gap={2}>

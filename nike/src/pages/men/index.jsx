@@ -5,10 +5,15 @@ import React from "react";
 import Link from "next/link";
 import FooterCTA from "@/components/FooterCTA";
 import Banner from "@/components/Banner";
+import Head from "next/head";
 
 function Men() {
   return (
     <Box>
+      <Head>
+        <title>Men's Shoes, Clothing & Accessories</title>
+        <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png" />
+      </Head>
       <Flex
         zIndex={"999"}
         w={"100%"}

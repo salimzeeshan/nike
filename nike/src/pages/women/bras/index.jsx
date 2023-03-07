@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -203,6 +204,13 @@ function Bras() {
 
   return (
     <Box data-filters="false" className="home" mt={"20px"}>
+      <Head>
+        <title>Women's Sports Bras</title>
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
+      </Head>
       <Flex
         py={"10px"}
         w={"100%"}
@@ -289,31 +297,31 @@ function Bras() {
           fontWeight={"bold"}
           cursor={"pointer"}>
           <Text
-              className={activeFilter === "all" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("all")}>
-              All
-            </Text>
-            <Text
-              className={
-                activeFilter === "high-support" ? "filter-tag-active" : ""
-              }
-              onClick={() => handleFiltering("high-support")}>
-              High Support
-            </Text>
-            <Text
-              className={
-                activeFilter === "medium-support" ? "filter-tag-active" : ""
-              }
-              onClick={() => handleFiltering("medium-support")}>
-              Medium Support
-            </Text>
-            <Text
-              className={
-                activeFilter === "light-support" ? "filter-tag-active" : ""
-              }
-              onClick={() => handleFiltering("light-support")}>
-              Light Support
-            </Text>
+            className={activeFilter === "all" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("all")}>
+            All
+          </Text>
+          <Text
+            className={
+              activeFilter === "high-support" ? "filter-tag-active" : ""
+            }
+            onClick={() => handleFiltering("high-support")}>
+            High Support
+          </Text>
+          <Text
+            className={
+              activeFilter === "medium-support" ? "filter-tag-active" : ""
+            }
+            onClick={() => handleFiltering("medium-support")}>
+            Medium Support
+          </Text>
+          <Text
+            className={
+              activeFilter === "light-support" ? "filter-tag-active" : ""
+            }
+            onClick={() => handleFiltering("light-support")}>
+            Light Support
+          </Text>
         </Flex>
       </Box>
 

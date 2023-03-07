@@ -2,10 +2,15 @@ import { Box, Flex, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import ScrollGrid from "@/components/ScrollGrid";
 import TwoGrid from "@/components/TwoGrid";
 import FooterCTA from "@/components/FooterCTA";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <Box className="home">
+      <Head>
+        <title>Nike. Just Do It.</title>
+        <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png" />
+      </Head>
       <Box className="banner-container">
         <Image
           className="home-banner"

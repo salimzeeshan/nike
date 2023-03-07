@@ -22,6 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -203,6 +204,13 @@ function WomenShoes() {
 
   return (
     <Box data-filters="false" className="home" mt={"20px"}>
+      <Head>
+        <title>Women's Shoes & Sneakers</title>
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
+      </Head>
       <Flex
         py={"10px"}
         w={"100%"}
