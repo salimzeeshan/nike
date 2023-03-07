@@ -21,11 +21,7 @@ export default function Home() {
           flexDirection={"column"}
           className="banner-cta">
           <Text
-            className="banner-text"
-            fontWeight={"900"}
-            textTransform={"uppercase"}
-            as={"b"}
-            fontSize={"5xl"}>
+            className="fancy-text">
             All the cushion, <br />
             All the feels
           </Text>

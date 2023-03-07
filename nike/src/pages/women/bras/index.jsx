@@ -28,12 +28,14 @@ const invalidImage =
 const placeholder = "https://placehold.jp/592x592.png";
 
 const fetchData = async () => {
-  var response = await fetch("https://dead-erin-coral-yoke.cyclic.app/sale");
+  var response = await fetch(
+    "https://dead-erin-coral-yoke.cyclic.app/women/bras"
+  );
   response = await response.json();
   return response;
 };
 
-function Sale() {
+function Bras() {
   const [hide, setHide] = useState(false);
   const [products, setProducts] = useState([]);
   const [varData, setVarData] = useState([]);
@@ -208,10 +210,10 @@ function Sale() {
         justifyContent="space-between"
         mb={"20px"}>
         <Text className="product-title-lg" fontWeight={"bold"} fontSize={"3xl"}>
-          Sale - Up to 40% Off ({varData.length})
+          All Bras ({varData.length})
         </Text>
         <Text className="product-title-sm" fontWeight={"bold"}>
-          Sale - Up to 40% Off
+          All Bras
         </Text>
 
         <Flex gap={4}>
@@ -287,70 +289,31 @@ function Sale() {
           fontWeight={"bold"}
           cursor={"pointer"}>
           <Text
-            className={activeFilter === "all" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("all")}>
-            All
-          </Text>
-          <Text
-            className={activeFilter === "bag" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("bag")}>
-            Bags & Backpacks
-          </Text>
-          <Text
-            className={activeFilter === "basketball" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("basketball")}>
-            Basketball
-          </Text>
-          <Text
-            className={activeFilter === "football" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("football")}>
-            Football
-          </Text>
-          <Text
-            className={activeFilter === "soccer" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("soccer")}>
-            Soccer
-          </Text>
-          <Text
-            className={activeFilter === "volleyball" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("volleyball")}>
-            Volleyball
-          </Text>
-          <Text
-            className={activeFilter === "gloves" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("gloves")}>
-            Gloves & Mitts
-          </Text>
-          <Text
-            className={activeFilter === "hat" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("hat")}>
-            Hats & Caps
-          </Text>
-          <Text
-            className={activeFilter === "hat" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("band")}>
-            Watches
-          </Text>
-          <Text
-            className={activeFilter === "sleeves" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("sleeves")}>
-            Sleeves & Armbands
-          </Text>
-          <Text
-            className={activeFilter === "swim" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("swim")}>
-            Swim Goggles & Caps
-          </Text>
-          <Text
-            className={activeFilter === "sunglasses" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("sunglasses")}>
-            Sunglasses
-          </Text>
-          <Text
-            className={activeFilter === "mat" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("mat")}>
-            Yoga Mats
-          </Text>
+              className={activeFilter === "all" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("all")}>
+              All
+            </Text>
+            <Text
+              className={
+                activeFilter === "high-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("high-support")}>
+              High Support
+            </Text>
+            <Text
+              className={
+                activeFilter === "medium-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("medium-support")}>
+              Medium Support
+            </Text>
+            <Text
+              className={
+                activeFilter === "light-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("light-support")}>
+              Light Support
+            </Text>
         </Flex>
       </Box>
 
@@ -402,39 +365,25 @@ function Sale() {
               All
             </Text>
             <Text
-              className={activeFilter === "shoes" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("shoes")}>
-              Shoes
+              className={
+                activeFilter === "high-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("high-support")}>
+              High Support
             </Text>
             <Text
-              className={activeFilter === "bra" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("bra")}>
-              Sports Bras
+              className={
+                activeFilter === "medium-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("medium-support")}>
+              Medium Support
             </Text>
             <Text
-              className={activeFilter === "shorts" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("shorts")}>
-              Shorts
-            </Text>
-            <Text
-              className={activeFilter === "top" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("top")}>
-              Tops & T-shirts
-            </Text>
-            <Text
-              className={activeFilter === "pants" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("pants")}>
-              Pants & Tights
-            </Text>
-            <Text
-              className={activeFilter === "jacket" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("jacket")}>
-              Jackets & Vests
-            </Text>
-            <Text
-              className={activeFilter === "leggings" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("leggings")}>
-              Leggings
+              className={
+                activeFilter === "light-support" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("light-support")}>
+              Light Support
             </Text>
           </Flex>
           <Box py={4}>
@@ -489,25 +438,16 @@ function Sale() {
                   <Text fontWeight={"500"} color={"#9d3400"} h={7}>
                     {item.message}
                   </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
+                  <Flex mb={8} direction={"column"}>
+                    <Text h={7}>{item.title}</Text>
+                    <Text h={7} color={"gray"}>
+                      {item.subtitle}
+                    </Text>
                   </Flex>
                   <Text h={7} mb={4} color={"gray"}>
                     {item.color_count}
                   </Text>
-                  <Flex gap={2} alignItems={"center"}>
-                    <Text>${item.price}</Text>
-                    <Text
-                      color={"#757575"}
-                      textDecoration={"line-through"}
-                      fontSize={"sm"}>
-                      ${item.original_price}
-                    </Text>
-                    <Text fontWeight={"bold"} color={"#007d49"}>
-                      {item.discount}
-                    </Text>
-                  </Flex>
+                  <Text>${item.price}</Text>
                   <button className="black-button add-to-cart">
                     ADD TO CART
                   </button>
@@ -541,18 +481,7 @@ function Sale() {
                   <Text h={7} mb={4} color={"gray"}>
                     {item.color_count}
                   </Text>
-                  <Flex gap={2} alignItems={"center"}>
-                    <Text>${item.price}</Text>
-                    <Text
-                      color={"#757575"}
-                      textDecoration={"line-through"}
-                      fontSize={"sm"}>
-                      ${item.original_price}
-                    </Text>
-                    <Text fontWeight={"bold"} color={"#007d49"}>
-                      {item.discount}
-                    </Text>
-                  </Flex>
+                  <Text>${item.price}</Text>
                   <button className="black-button add-to-cart">
                     ADD TO CART
                   </button>
@@ -566,4 +495,4 @@ function Sale() {
   );
 }
 
-export default Sale;
+export default Bras;

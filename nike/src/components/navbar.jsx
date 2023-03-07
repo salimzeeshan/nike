@@ -125,9 +125,6 @@ function Navbar() {
           <Link href={"/women"}>
             <Text cursor={"pointer"}>Women</Text>
           </Link>
-          <Link href={"/kids"}>
-            <Text cursor={"pointer"}>Kids</Text>
-          </Link>
           <Link href={"/accessories"}>
             <Text cursor={"pointer"}>Accessories</Text>
           </Link>
@@ -141,6 +138,12 @@ function Navbar() {
           <InputGroup>
             <InputLeftElement pointerEvents="none" children={searchIcon} />
             <Input
+              transition={"300ms"}
+              _focus={{
+                WebkitBoxShadow: "none",
+                boxShadow: "none",
+                outlineColor: "black",
+              }}
               border={"0px solid transparent"}
               borderRadius={"20px"}
               backgroundColor={"#f5f5f5"}
@@ -259,16 +262,6 @@ function Navbar() {
                     alignItems={"center"}
                     justifyContent={"space-between"}>
                     <Text as={"b"}>Women</Text>
-                    <IoIosArrowForward size={"25px"} />
-                  </Flex>
-                </Link>
-                <Link href={"/kids"}>
-                  <Flex
-                    onClick={onClose}
-                    w={"100%"}
-                    alignItems={"center"}
-                    justifyContent={"space-between"}>
-                    <Text as={"b"}>Kids</Text>
                     <IoIosArrowForward size={"25px"} />
                   </Flex>
                 </Link>

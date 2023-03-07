@@ -220,6 +220,7 @@
   text-transform: uppercase;
   font-size: 65px;
   line-height: 50px;
+  letter-spacing: -3px;
 }
 
 .footer-cta{
@@ -360,6 +361,34 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.women-banner-text-lg{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: absolute;
+  left: var(--padding-lg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.women-banner-text-sm{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.women-banner-img-lg{
+  display: block;
+}
+
+.women-banner-img-sm{
+  display: none;
+}
+
+.women-banner-text-sm{
+  display: none;
+}
+
 @media only screen and (max-width: 972px){
   .nav-men{
     width: 100%;
@@ -495,6 +524,9 @@
     padding-left: var(--padding-sm);
     padding-right: var(--padding-sm);
   }  
+  .women-banner-text-lg{
+    left: var(--padding-sm);
+  }
 }
 
 @media only screen and (max-width: 600px){
@@ -524,6 +556,24 @@
   }
   .footer-b{
     text-align: left;
+  }
+  .women-banner-text-lg{
+    position: static;
+  }
+  .women-banner-img-lg{
+    display: none;
+  }
+  
+  .women-banner-img-sm{
+    display: block;
+  }
+  .women-banner-text-sm{
+    display: flex;
+    margin-top: 1.5rem;
+    font-size: small;
+  }
+  .women-banner-text-lg{
+    display: none;
   }
 }
 
