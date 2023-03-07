@@ -117,7 +117,6 @@ export default function Home() {
         img3="https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/h_816,c_limit/f1d83c67-588b-4de8-943c-560e2740072c/nike-just-do-it.jpg"
         title="Always Iconic"
       />
-
       <FooterCTA />
     </Box>
   );

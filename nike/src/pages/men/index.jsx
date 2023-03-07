@@ -25,9 +25,12 @@ function Men() {
             <Link href={"/men/shoes"}>
               <Text>Shoes</Text>
             </Link>
-            <Text>Clothing</Text>
-            <Text>Accessories</Text>
-            <Text>Sale</Text>
+            <Link href={"/men/clothing"}>
+              <Text>Clothing</Text>
+            </Link>
+            <Link href={"/men/accessories"}>
+              <Text>Accessories</Text>
+            </Link>
           </Flex>
         </Flex>
       </Flex>

@@ -29,13 +29,13 @@ const placeholder = "https://placehold.jp/592x592.png";
 
 const fetchData = async () => {
   var response = await fetch(
-    "https://dead-erin-coral-yoke.cyclic.app/men/shoes"
+    "https://dead-erin-coral-yoke.cyclic.app/men/clothes"
   );
   response = await response.json();
   return response;
 };
 
-function MenShoes() {
+function Clothing() {
   const [hide, setHide] = useState(false);
   const [products, setProducts] = useState([]);
   const [varData, setVarData] = useState([]);
@@ -210,10 +210,10 @@ function MenShoes() {
         justifyContent="space-between"
         mb={"20px"}>
         <Text className="product-title-lg" fontWeight={"bold"} fontSize={"3xl"}>
-          Men's Shoes & Sneakers ({varData.length})
+          Men's Clothing ({varData.length})
         </Text>
         <Text className="product-title-sm" fontWeight={"bold"}>
-          Men's Shoes & Sneakers
+          Men's Clothing
         </Text>
 
         <Flex gap={4}>
@@ -289,40 +289,49 @@ function MenShoes() {
           fontWeight={"bold"}
           cursor={"pointer"}>
           <Text
-            className={activeFilter === "all" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("all")}>
-            All
-          </Text>
-          <Text
-            className={activeFilter === "jordan" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("jordan")}>
-            Jordan
-          </Text>
-          <Text
-            className={activeFilter === "running" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("running")}>
-            Running
-          </Text>
-          <Text
-            className={activeFilter === "training" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("training")}>
-            Training
-          </Text>
-          <Text
-            className={activeFilter === "soccer" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("soccer")}>
-            Soccer
-          </Text>
-          <Text
-            className={activeFilter === "skate" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("skate")}>
-            Skateboarding
-          </Text>
-          <Text
-            className={activeFilter === "100" ? "filter-tag-active" : ""}
-            onClick={() => handleFiltering("100")}>
-            Shoes $100 & Under
-          </Text>
+              className={activeFilter === "all" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("all")}>
+              All
+            </Text>
+            <Text
+              className={activeFilter === "hoodie" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("hoodie")}>
+              Hoodies & Pullovers
+            </Text>
+            <Text
+              className={
+                activeFilter === "shorts" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("shorts")}>
+              Shorts
+            </Text>
+            <Text
+              className={activeFilter === "top" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("top")}>
+              Tops & T-shirts
+            </Text>
+            <Text
+              className={activeFilter === "pants" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("pants")}>
+              Pants & Tights
+            </Text>
+            <Text
+              className={
+                activeFilter === "jacket" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("jacket")}>
+              Jackets & Vests
+            </Text>
+            <Text
+              className={activeFilter === "swim" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("swim")}>
+                Swim
+            </Text>
+            <Text
+              className={activeFilter === "socks" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("socks")}>
+              Socks
+            </Text>
         </Flex>
       </Box>
 
@@ -374,34 +383,43 @@ function MenShoes() {
               All
             </Text>
             <Text
-              className={activeFilter === "jordan" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("jordan")}>
-              Jordan
+              className={activeFilter === "hoodie" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("hoodie")}>
+              Hoodies & Pullovers
             </Text>
             <Text
-              className={activeFilter === "running" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("running")}>
-              Running
+              className={
+                activeFilter === "shorts" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("shorts")}>
+              Shorts
             </Text>
             <Text
-              className={activeFilter === "training" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("training")}>
-              Training
+              className={activeFilter === "top" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("top")}>
+              Tops & T-shirts
             </Text>
             <Text
-              className={activeFilter === "soccer" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("soccer")}>
-              Soccer
+              className={activeFilter === "pants" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("pants")}>
+              Pants & Tights
             </Text>
             <Text
-              className={activeFilter === "skate" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("skate")}>
-              Skateboarding
+              className={
+                activeFilter === "jacket" ? "filter-tag-active" : ""
+              }
+              onClick={() => handleFiltering("jacket")}>
+              Jackets & Vests
             </Text>
             <Text
-              className={activeFilter === "100" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("100")}>
-              Shoes $100 & Under
+              className={activeFilter === "swim" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("swim")}>
+                Swim
+            </Text>
+            <Text
+              className={activeFilter === "socks" ? "filter-tag-active" : ""}
+              onClick={() => handleFiltering("socks")}>
+              Socks
             </Text>
           </Flex>
           <Box py={4}>
@@ -449,6 +467,7 @@ function MenShoes() {
               return (
                 <Box key={item._id}>
                   <Image
+                    w={"100%"}
                     mb={2}
                     src={item.image === invalidImage ? placeholder : item.image}
                   />
@@ -459,7 +478,7 @@ function MenShoes() {
                     <Text>{item.title}</Text>
                     <Text color={"gray"}>{item.subtitle}</Text>
                   </Flex>
-                  <Text mb={4} color={"gray"}>
+                  <Text h={7} mb={4} color={"gray"}>
                     {item.color_count}
                   </Text>
                   <Text>${item.price}</Text>
@@ -493,7 +512,7 @@ function MenShoes() {
                     <Text>{item.title}</Text>
                     <Text color={"gray"}>{item.subtitle}</Text>
                   </Flex>
-                  <Text mb={4} color={"gray"}>
+                  <Text h={7} mb={4} color={"gray"}>
                     {item.color_count}
                   </Text>
                   <Text>${item.price}</Text>
@@ -510,4 +529,4 @@ function MenShoes() {
   );
 }
 
-export default MenShoes;
+export default Clothing;

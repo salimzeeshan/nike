@@ -3,11 +3,11 @@ import React from "react";
 
 function TwoGrid({ title, txt1, dsc1, img1, btn1, txt2, dsc2, btn2, img2 }) {
   return (
-    <Box mt={"90px"}>
+    <Box mt={"90px"} width={"100%"}>
       <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
         {title}
       </Text>
-      <Box className="grid-two">
+      <Box w={"100%"} className="grid-two">
         <Box position={"relative"}>
           <Box pr={"25px"} className="grid-two-box">
             {txt1 ? <Text fontWeight={"bold"}>{txt1}</Text> : null}
@@ -19,7 +19,7 @@ function TwoGrid({ title, txt1, dsc1, img1, btn1, txt2, dsc2, btn2, img2 }) {
 
             <button className="white-button">{btn1}</button>
           </Box>
-          <Image src={img1} />
+          <Image width={"100%"} src={img1} />
         </Box>
         <Box position={"relative"}>
           <Box pr={"25px"} className="grid-two-box">
@@ -35,7 +35,7 @@ function TwoGrid({ title, txt1, dsc1, img1, btn1, txt2, dsc2, btn2, img2 }) {
             ) : null}
             <button className="white-button">{btn2}</button>
           </Box>
-          <Image src={img2} />
+          <Image width={"100%"} src={img2} />
         </Box>
       </Box>
     </Box>
