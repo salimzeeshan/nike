@@ -60,16 +60,7 @@ function Signin() {
   }
 
   return (
-    <Center
-      px={"20px"}
-      bgColor={"white"}
-      h={"100vh"}
-      w={"100%"}
-      zIndex={"999999999"}
-      overflow={"hidden"}
-      position={"absolute"}
-      top={"0"}
-      right={"0"}>
+    <Center px={"20px"} bgColor={"white"} h={"100vh"}>
       <Head>
         <title>Sign In</title>
         <link

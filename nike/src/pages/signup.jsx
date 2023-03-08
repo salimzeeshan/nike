@@ -61,16 +61,7 @@ function Signup() {
   }
 
   return (
-    <Center
-      px={"20px"}
-      bgColor={"white"}
-      h={"100vh"}
-      w={"100%"}
-      zIndex={"999999999"}
-      overflow={"hidden"}
-      position={"absolute"}
-      top={"0"}
-      right={"0"}>
+    <Center px={"20px"} bgColor={"white"} h={"100vh"}>
       <Head>
         <title>Sign Up</title>
         <link
@@ -155,7 +146,7 @@ function Signup() {
         <Center mt={4}>
           <Text>
             Already have an account?{" "}
-            <Link href={"/signin"}>
+            <Link href={"/login"}>
               <span style={{ fontWeight: "bold" }}>Sign In</span>
             </Link>
           </Text>
