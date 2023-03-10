@@ -80,12 +80,13 @@ function Signup() {
         borderColor={"gray.200"}
         flexDir={"column"}>
         <Center>
-          <Image
-            w={"150px"}
-            src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
-          />
+          <Link href={"/"}>
+            <Image
+              w={"150px"}
+              src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+            />
+          </Link>
         </Center>
-        <Text>{currentUser && currentUser.email}</Text>
         <FormControl onSubmit={handleSubmit}>
           {error === "" ? null : (
             <Alert borderRadius={"5px"} mb={4} status="error">

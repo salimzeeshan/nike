@@ -22,11 +22,10 @@ function Signin() {
   const passwordRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signup, currentUser } = useContext(AuthContext);
+  const { login, currentUser } = useContext(AuthContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(passwordRef.current.value.length);
 
     if (emailRef.current.value === "" || passwordRef.current.value === "") {
       setError("Please fill both of the fields");
@@ -38,22 +37,13 @@ function Signin() {
       return;
     }
 
-    if (passwordRef.current.value.length < 8) {
-      setError("Password must be 8 characters long");
-      return;
-    }
-
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setError("Passwords do not match");
-      return;
-    }
-
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
+      location.href = "/profile";
     } catch (error) {
-      setError("Error while creating your account");
+      setError("Incorrect email or password");
       console.log(error);
     }
     setLoading(false);
@@ -79,12 +69,13 @@ function Signin() {
         borderColor={"gray.200"}
         flexDir={"column"}>
         <Center>
-          <Image
-            w={"150px"}
-            src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
-          />
+          <Link href={"/"}>
+            <Image
+              w={"150px"}
+              src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+            />
+          </Link>
         </Center>
-        <Text>{currentUser && currentUser.email}</Text>
         <FormControl onSubmit={handleSubmit}>
           {error === "" ? null : (
             <Alert borderRadius={"5px"} mb={4} status="error">

@@ -9,6 +9,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
+  Image,
   Input,
   InputGroup,
   InputLeftElement,
@@ -18,8 +19,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
-import React, { useEffect, useState } from "react";
+import { VscAccount } from "react-icons/vsc";
+import { AiOutlineLogin } from "react-icons/ai";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { AuthContext } from "@/context/authContext";
 
 const searchIcon = (
   <svg
@@ -41,6 +45,7 @@ function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = useState("right");
   const [scroll, setScroll] = useState(0);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const input = document.querySelector(".input-small");
@@ -55,13 +60,13 @@ function Navbar() {
       cancel.classList.remove("cancel-active");
     });
 
-    icon.addEventListener("click", () => {
-      icon.classList.add("icon-active");
-      input.classList.add("input-active");
-      search.classList.add("search-active");
-      cancel.classList.add("cancel-active");
-      console.log("HEYYY");
-    });
+    icon &&
+      icon.addEventListener("click", () => {
+        icon.classList.add("icon-active");
+        input.classList.add("input-active");
+        search.classList.add("search-active");
+        cancel.classList.add("cancel-active");
+      });
 
     const body = document.body;
     let lastScroll = 0;
@@ -217,6 +222,25 @@ function Navbar() {
               stroke-width="1.5"
               d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5"></path>
           </svg>
+        </Box>
+        <Box>
+          {currentUser ? (
+            currentUser.photoURL ? (
+              <Link href={"/profile"}>
+                <Box objectFit={"contain"} w={"30px"} h={"30px"} borderRadius={"50%"} overflow={"hidden"}>
+                  <Image src={currentUser.photoURL} />
+                </Box>
+              </Link>
+            ) : (
+              <Link href={"/profile"}>
+                <VscAccount size={"22px"} />
+              </Link>
+            )
+          ) : (
+            <Link href={"/login"}>
+              <AiOutlineLogin size={"22px"} />
+            </Link>
+          )}
         </Box>
         <Box onClick={onOpen} className="hamburger">
           <svg
