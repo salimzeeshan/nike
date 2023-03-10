@@ -35,8 +35,13 @@ function Profile() {
   }, [currentUser]);
 
   return (
-    <Center>
-      <Flex gap={2} alignItems={"left"} flexDir={"column"}>
+    <Center px={"20px"}>
+      <Flex
+        maxW={"430px"}
+        w={"100%"}
+        gap={2}
+        alignItems={"left"}
+        flexDir={"column"}>
         <Flex gap={4} alignItems={"center"}>
           <Image w={"80px"} src={photoURL} />
           <Flex>
