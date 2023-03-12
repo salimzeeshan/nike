@@ -105,7 +105,19 @@ const userAdd = async (req, res, next) => {
     }
 }
 
+const addToCart = async (req, res, next) => {
+    try {
+        const userData = await productModel.user.find({"email": `${req.body.email}`})
+        const cart = userData.cart
+        cart.push(req.body)
+        await productModel.user.updateOne({ "email": `${req.body.email}` }, { "cart": cart })
+        res.send({"message": "Product added to cart successfully"})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 module.exports = {
-    showAll, menShoes, menClothes, menAccessories, womenBras, womenClothes, womenShoes, accessories, sale, users, userAdd
+    showAll, menShoes, menClothes, menAccessories, womenBras, womenClothes, womenShoes, accessories, sale, users, userAdd, addToCart
 }

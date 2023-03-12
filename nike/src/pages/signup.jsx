@@ -16,6 +16,7 @@ import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "@/context/authContext";
 import Link from "next/link";
 import Head from "next/head";
+import axios from "axios";
 
 function Signup() {
   const emailRef = useRef();
@@ -59,6 +60,18 @@ function Signup() {
       setError("Error while creating your account");
       console.log(error);
     }
+
+    axios.post('https://dead-erin-coral-yoke.cyclic.app/user-add', {
+      email: emailRef.current.value,
+      cart: []
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     setLoading(false);
     setTimeout(() => {
       location.href = "/login";

@@ -202,11 +202,29 @@ function MenShoes() {
     );
   }
 
+  const handleATC = (item) => {
+    const product = { ...item, quantity: 1 };
+    
+    axios.post('https://dead-erin-coral-yoke.cyclic.app/user-add', {
+      email: emailRef.current.value,
+      cart: []
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
+
   return (
     <Box data-filters="false" className="home" mt={"20px"}>
       <Head>
         <title>Men's Shoes & Sneakers</title>
-        <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png" />
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
       </Head>
       <Flex
         py={"10px"}
@@ -468,7 +486,9 @@ function MenShoes() {
                     {item.color_count}
                   </Text>
                   <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
+                  <button
+                    onClick={() => handleATC(item)}
+                    className="black-button add-to-cart">
                     ADD TO CART
                   </button>
                 </Box>
