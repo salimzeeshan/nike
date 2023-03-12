@@ -38,11 +38,9 @@ const productModel = new Schema({
 const userModel = new Schema({
     email: {
         type: String,
-        required: true
     },
     cart: {
         type: Array,
-        required: true
     }
 })
 
