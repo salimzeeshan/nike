@@ -96,7 +96,7 @@ const users = async (req, res, next) => {
     }
 }
 
-const userAdd = async (res, req, next) => {
+const userAdd = async (req, res, next) => {
     try {
         const data = await productModel.user.insertMany(req)
         console.log("User added")
