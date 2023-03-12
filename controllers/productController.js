@@ -110,10 +110,9 @@ const addToCart = async (req, res, next) => {
         const userData = await productModel.user.findOne({"email": `${req.body.email}`})
         var cart = userData.cart
         cart.push(req.body)
-        console.log(cart)
         // res.send(cart)
-        // await productModel.user.updateOne({ "email": `${req.body.email}` }, { "cart": cart })
-        // res.send({ "message": "Product added to cart successfully" })
+        await productModel.user.updateOne({ "email": `${req.body.email}` }, { "cart": cart })
+        res.send({ "message": "Product added to cart successfully" })
     } catch (error) {
         console.log(error)
     }
