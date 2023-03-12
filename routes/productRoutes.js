@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express()
-
 const app = express()
-app.use(express.json())
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 const productController = require('../controllers/productController')
 
