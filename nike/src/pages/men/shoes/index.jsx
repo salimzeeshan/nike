@@ -24,6 +24,7 @@ import { FiChevronDown } from "react-icons/fi";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/authContext";
 import Head from "next/head";
+import axios from "axios";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -44,6 +45,7 @@ function MenShoes() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const { currentUser } = useContext(AuthContext);
+  const [cartLoading, setCartLoading] = useState(false);
 
   const getData = async () => {
     const skeleton = document.querySelector(".skeleton-grid");
@@ -207,10 +209,13 @@ function MenShoes() {
   const handleATC = (item) => {
     var product = { ...item, quantity: 1 };
     product = { ...product, email: currentUser.email };
+    console.log(product)
+    setCartLoading(true);
 
     axios
       .post("https://dead-erin-coral-yoke.cyclic.app/user-add", product)
       .then(function (response) {
+        setCartLoading(false);
         console.log(response);
       })
       .catch(function (error) {
@@ -487,11 +492,12 @@ function MenShoes() {
                     {item.color_count}
                   </Text>
                   <Text>${item.price}</Text>
-                  <button
+                  <Button
+                    isLoading={cartLoading}
                     onClick={() => handleATC(item)}
                     className="black-button add-to-cart">
                     ADD TO CART
-                  </button>
+                  </Button>
                 </Box>
               );
             })}
