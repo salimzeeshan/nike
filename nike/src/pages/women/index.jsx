@@ -63,8 +63,8 @@ function Women() {
               the lineup.
             </Text>
             <Flex gap={2}>
-              <buttton className="black-button">Shop</buttton>
-              <buttton className="black-button">See the Lineup</buttton>
+              <button className="black-button">Shop</button>
+              <button className="black-button">See the Lineup</button>
             </Flex>
           </Box>
         </Box>
@@ -77,8 +77,8 @@ function Women() {
             lineup.
           </Text>
           <Flex gap={2}>
-            <buttton className="black-button">Shop</buttton>
-            <buttton className="black-button">See the Lineup</buttton>
+            <button className="black-button">Shop</button>
+            <button className="black-button">See the Lineup</button>
           </Flex>
         </Box>
         <Box mt={"90px"}>

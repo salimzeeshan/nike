@@ -22,9 +22,9 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown } from "react-icons/fi";
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "@/context/authContext";
 import Head from "next/head";
 import axios from "axios";
+import ProdutCard from "@/components/ProdutCard";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -44,8 +44,6 @@ function MenShoes() {
   const [varData, setVarData] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
-  const { currentUser } = useContext(AuthContext);
-  const [cartLoading, setCartLoading] = useState(false);
 
   const getData = async () => {
     const skeleton = document.querySelector(".skeleton-grid");
@@ -127,8 +125,6 @@ function MenShoes() {
       });
     }
 
-    console.log(data);
-
     if (query === "all") {
       if (activeFilter === "all") {
         setVarData(products);
@@ -205,23 +201,6 @@ function MenShoes() {
       </GridItem>
     );
   }
-
-  const handleATC = (item) => {
-    var product = { ...item, quantity: 1 };
-    product = { ...product, email: currentUser.email };
-    console.log(product)
-    setCartLoading(true);
-
-    axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/user-add", product)
-      .then(function (response) {
-        setCartLoading(false);
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   return (
     <Box data-filters="false" className="home" mt={"20px"}>
@@ -476,29 +455,16 @@ function MenShoes() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <Button
-                    isLoading={cartLoading}
-                    onClick={() => handleATC(item)}
-                    className="black-button add-to-cart">
-                    ADD TO CART
-                  </Button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>
@@ -513,26 +479,16 @@ function MenShoes() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
-                    ADD TO CART
-                  </button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>

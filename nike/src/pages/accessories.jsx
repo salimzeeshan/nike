@@ -23,6 +23,7 @@ import {
 import { FiChevronDown } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import ProdutCard from "@/components/ProdutCard";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -206,7 +207,10 @@ function Accessories() {
     <Box data-filters="false" className="home" mt={"20px"}>
       <Head>
         <title>Nike Gear & Accessories</title>
-        <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png" />
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
       </Head>
       <Flex
         py={"10px"}
@@ -518,27 +522,16 @@ function Accessories() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    w={"100%"}
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text h={7} mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
-                    ADD TO CART
-                  </button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>
@@ -553,26 +546,16 @@ function Accessories() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text h={7} mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
-                    ADD TO CART
-                  </button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>

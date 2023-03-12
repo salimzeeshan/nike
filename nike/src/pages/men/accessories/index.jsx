@@ -23,6 +23,7 @@ import {
 import { FiChevronDown } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import ProdutCard from "@/components/ProdutCard";
 
 const invalidImage =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -206,7 +207,10 @@ function Accessories() {
     <Box data-filters="false" className="home" mt={"20px"}>
       <Head>
         <title>Men's Accessories & Equipments</title>
-        <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png" />
+        <link
+          rel="shortcut icon"
+          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+        />
       </Head>
       <Flex
         py={"10px"}
@@ -294,74 +298,70 @@ function Accessories() {
           fontWeight={"bold"}
           cursor={"pointer"}>
           <Text
-              className={activeFilter === "all" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("all")}>
-              All
-            </Text>
-            <Text
-              className={activeFilter === "bag" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("bag")}>
-              Bags & Backpacks
-            </Text>
-            <Text
-              className={
-                activeFilter === "basketball" ? "filter-tag-active" : ""
-              }
-              onClick={() => handleFiltering("basketball")}>
-              Basketball
-            </Text>
-            <Text
-              className={activeFilter === "football" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("football")}>
-              Football
-            </Text>
-            <Text
-              className={activeFilter === "soccer" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("soccer")}>
-              Soccer
-            </Text>
-            <Text
-              className={
-                activeFilter === "volleyball" ? "filter-tag-active" : ""
-              }
-              onClick={() => handleFiltering("volleyball")}>
-              Volleyball
-            </Text>
-            <Text
-              className={activeFilter === "gloves" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("gloves")}>
-              Gloves & Mitts
-            </Text>
-            <Text
-              className={activeFilter === "hat" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("hat")}>
-              Hats & Caps
-            </Text>
-            <Text
-              className={activeFilter === "hat" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("band")}>
-              Watches
-            </Text>
-            <Text
-              className={activeFilter === "sleeves" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("sleeves")}>
-              Sleeves & Armbands
-            </Text>
-            <Text
-              className={activeFilter === "swim" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("swim")}>
-              Swim Goggles & Caps
-            </Text>
-            <Text
-              className={activeFilter === "sunglasses" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("sunglasses")}>
-              Sunglasses
-            </Text>
-            <Text
-              className={activeFilter === "mat" ? "filter-tag-active" : ""}
-              onClick={() => handleFiltering("mat")}>
-              Yoga Mats
-            </Text>
+            className={activeFilter === "all" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("all")}>
+            All
+          </Text>
+          <Text
+            className={activeFilter === "bag" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("bag")}>
+            Bags & Backpacks
+          </Text>
+          <Text
+            className={activeFilter === "basketball" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("basketball")}>
+            Basketball
+          </Text>
+          <Text
+            className={activeFilter === "football" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("football")}>
+            Football
+          </Text>
+          <Text
+            className={activeFilter === "soccer" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("soccer")}>
+            Soccer
+          </Text>
+          <Text
+            className={activeFilter === "volleyball" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("volleyball")}>
+            Volleyball
+          </Text>
+          <Text
+            className={activeFilter === "gloves" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("gloves")}>
+            Gloves & Mitts
+          </Text>
+          <Text
+            className={activeFilter === "hat" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("hat")}>
+            Hats & Caps
+          </Text>
+          <Text
+            className={activeFilter === "hat" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("band")}>
+            Watches
+          </Text>
+          <Text
+            className={activeFilter === "sleeves" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("sleeves")}>
+            Sleeves & Armbands
+          </Text>
+          <Text
+            className={activeFilter === "swim" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("swim")}>
+            Swim Goggles & Caps
+          </Text>
+          <Text
+            className={activeFilter === "sunglasses" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("sunglasses")}>
+            Sunglasses
+          </Text>
+          <Text
+            className={activeFilter === "mat" ? "filter-tag-active" : ""}
+            onClick={() => handleFiltering("mat")}>
+            Yoga Mats
+          </Text>
         </Flex>
       </Box>
 
@@ -467,7 +467,9 @@ function Accessories() {
               Swim Goggles & Caps
             </Text>
             <Text
-              className={activeFilter === "sunglasses" ? "filter-tag-active" : ""}
+              className={
+                activeFilter === "sunglasses" ? "filter-tag-active" : ""
+              }
               onClick={() => handleFiltering("sunglasses")}>
               Sunglasses
             </Text>
@@ -520,27 +522,16 @@ function Accessories() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    w={"100%"}
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text h={7} mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
-                    ADD TO CART
-                  </button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>
@@ -555,26 +546,16 @@ function Accessories() {
           <Box className="products-grid" columnGap={4} rowGap={6}>
             {varData.map((item) => {
               return (
-                <Box key={item._id}>
-                  <Image
-                    mb={2}
-                    src={item.image === invalidImage ? placeholder : item.image}
-                  />
-                  <Text fontWeight={"500"} color={"#9d3400"} h={7}>
-                    {item.message}
-                  </Text>
-                  <Flex mb={2} direction={"column"}>
-                    <Text>{item.title}</Text>
-                    <Text color={"gray"}>{item.subtitle}</Text>
-                  </Flex>
-                  <Text h={7} mb={4} color={"gray"}>
-                    {item.color_count}
-                  </Text>
-                  <Text>${item.price}</Text>
-                  <button className="black-button add-to-cart">
-                    ADD TO CART
-                  </button>
-                </Box>
+                <ProdutCard
+                  _id={item._id}
+                  image={item.image}
+                  message={item.message}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  color_count={item.color_count}
+                  price={item.price}
+                  item={item}
+                />
               );
             })}
           </Box>
