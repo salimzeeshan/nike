@@ -85,7 +85,8 @@ const accessories = async (req, res, next) => {
     }
 }
 
-const users = async (res, req, next) => {
+
+const users = async (req, res, next) => {
     try {
         const data = await user.find({ "email": `${req.email}` })
         res.send(data)
