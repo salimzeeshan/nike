@@ -7,6 +7,7 @@ import {
   Image,
   Box,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 import { AuthContext } from "@/context/authContext";
 import { AiOutlineCloudUpload } from "react-icons/ai";
@@ -22,6 +23,7 @@ function Profile() {
   const [loading, setLoading] = useState(false);
   const [opacity, setOpacity] = useState("0");
   const [blur, setBlur] = useState("0");
+  const toast = useToast();
 
   const handleLogout = async () => {
     await logout();
@@ -36,7 +38,13 @@ function Profile() {
 
   const handleUpload = async () => {
     await upload(photo, currentUser, setLoading);
-    location.reload();
+    toast({
+      title: "Profile picture updated!",
+      description: "Please reload this page to see the changes",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
   };
 
   useEffect(() => {
@@ -83,6 +91,8 @@ function Profile() {
           gap={4}
           alignItems={"center"}>
           <Box
+            w={"80px"}
+            h={"80px"}
             position={"relative"}
             objectFit={"contain"}
             borderRadius={"50%"}

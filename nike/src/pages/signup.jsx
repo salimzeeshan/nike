@@ -55,27 +55,29 @@ function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      setMessage("Account created succesfully!");
     } catch (error) {
       setError("Error while creating your account");
       console.log(error);
     }
 
-    axios.post('https://dead-erin-coral-yoke.cyclic.app/user-add', {
-      email: emailRef.current.value,
-      cart: []
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    axios
+      .post("https://dead-erin-coral-yoke.cyclic.app/user-add", {
+        email: emailRef.current.value,
+        cart: [],
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
+    setMessage("Account created succesfully!");
     setLoading(false);
+
     setTimeout(() => {
       location.href = "/login";
-    }, 3000);
+    }, 5000);
   }
 
   return (
