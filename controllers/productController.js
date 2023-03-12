@@ -96,8 +96,8 @@ const users = async (res, req, next) => {
 
 const userAdd = async (res, req, next) => {
     try {
-        await user.insertMany(req)
-        res.send({"msg": "User added"})
+        const data = await user.insertMany(req)
+        res.send(data)
     } catch (error) {
         console.log(error)
     }
