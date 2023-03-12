@@ -111,7 +111,8 @@ const addToCart = async (req, res, next) => {
         const cart = userData.cart
         cart.push(req.body)
         await productModel.user.updateOne({ "email": `${req.body.email}` }, { "cart": cart })
-        res.send({"message": "Product added to cart successfully"})
+        res.send({ "message": "Product added to cart successfully" })
+        console.log("HI")
     } catch (error) {
         console.log(error)
     }
