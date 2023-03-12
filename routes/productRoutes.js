@@ -2,8 +2,7 @@ const express = require('express')
 const router = express()
 const app = express()
 const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({extended: false}));
+const jsonParser = bodyParser.json()
 
 const productController = require('../controllers/productController')
 
@@ -17,7 +16,7 @@ router.get("/women/bras", productController.womenBras)
 router.get("/sale", productController.sale)
 router.get("/accessories", productController.accessories)
 
-router.post("/users", productController.users)
-router.post("/user-add", productController.userAdd)
+router.post("/users",jsonParser, productController.users)
+router.post("/user-add",jsonParser, productController.userAdd)
 
 module.exports = router
