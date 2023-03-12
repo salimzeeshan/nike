@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express()
 
+const app = express()
+app.use(express.json())
+
 const productController = require('../controllers/productController')
 
 router.get("/all", productController.showAll)
