@@ -22,6 +22,7 @@ function Signup() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const { signup, currentUser } = useContext(AuthContext);
 
@@ -53,11 +54,15 @@ function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      setMessage("Account created succesfully!");
     } catch (error) {
       setError("Error while creating your account");
       console.log(error);
     }
     setLoading(false);
+    setTimeout(() => {
+      location.href = "/login";
+    }, 3000);
   }
 
   return (
@@ -92,6 +97,12 @@ function Signup() {
             <Alert borderRadius={"5px"} mb={4} status="error">
               <AlertIcon />
               {error}
+            </Alert>
+          )}
+          {message === "" ? null : (
+            <Alert borderRadius={"5px"} mb={4} status="success">
+              <AlertIcon />
+              {message}
             </Alert>
           )}
           <Flex mb={4} gap={2} flexDir={"column"}>

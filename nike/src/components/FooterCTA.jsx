@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 
 function FooterCTA() {
@@ -24,8 +25,12 @@ function FooterCTA() {
         </Text>
         <Text>Sign Up for free. Join the community.</Text>
         <Flex gap={"15px"}>
-          <button className="white-button">Join Us</button>
-          <button className="white-button">Sign In</button>
+          <Link href={"/signup"}>
+            <button className="white-button">Join Us</button>
+          </Link>
+          <Link href={"/login"}>
+            <button className="white-button">Sign In</button>
+          </Link>
         </Flex>
       </Box>
 

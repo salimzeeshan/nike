@@ -13,4 +13,7 @@ router.get("/women/bras", productController.womenBras)
 router.get("/sale", productController.sale)
 router.get("/accessories", productController.accessories)
 
+router.get("/users", productController.users)
+router.post("/user-add", productController.userAdd)
+
 module.exports = router

@@ -41,7 +41,7 @@ function Signin() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      location.href = "/profile";
+      location.href = "/";
     } catch (error) {
       setError("Incorrect email or password");
       console.log(error);

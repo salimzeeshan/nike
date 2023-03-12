@@ -5,11 +5,7 @@ import {
   Flex,
   Text,
   Image,
-  Input,
-  SkeletonCircle,
-  Skeleton,
   Box,
-  CardHeader,
   Heading,
 } from "@chakra-ui/react";
 import { AuthContext } from "@/context/authContext";
@@ -17,14 +13,13 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import Head from "next/head";
 
 const defaultPhoto =
-  "https://i.pinimg.com/originals/4c/8e/b3/4c8eb330abb4ca5383a110ab2001b166.gif";
+  "https://i.pinimg.com/1200x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg";
 
 function Profile() {
   const { currentUser, logout, upload } = useContext(AuthContext);
   const [photo, setPhoto] = useState(null);
   const [photoURL, setPhotoURL] = useState(defaultPhoto);
   const [loading, setLoading] = useState(false);
-  const [photoLoading, setPhotoLoading] = useState(true);
   const [opacity, setOpacity] = useState("0");
   const [blur, setBlur] = useState("0");
 
@@ -49,17 +44,14 @@ function Profile() {
       console.log(currentUser);
       setPhotoURL(currentUser.photoURL);
     }
-    setPhotoLoading(false);
   }, [currentUser]);
 
   const handleMouseOver = () => {
-    console.log("Bhagg");
     setOpacity("100");
-    setBlur("5");
+    setBlur("10");
   };
 
   const handleMouseOut = () => {
-    console.log("Hatt");
     setOpacity("0");
     setBlur("0");
   };

@@ -1,4 +1,4 @@
-const product = require('../models/productModel')
+const {product, user} = require('../models/productModel')
 const express = require('express')
 
 const app = express()
@@ -85,7 +85,25 @@ const accessories = async (req, res, next) => {
     }
 }
 
+const users = async (res, req, next) => {
+    try {
+        const data = await user.find({ "email": `${req.email}` })
+        res.send(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const userAdd = async (res, req, next) => {
+    try {
+        await user.insert(req)
+        res.send({"msg": "User added"})
+    } catch (error) {
+        res.send({"error": error})
+    }
+}
+
 
 module.exports = {
-    showAll, menShoes, menClothes, menAccessories, womenBras, womenClothes, womenShoes, accessories, sale
+    showAll, menShoes, menClothes, menAccessories, womenBras, womenClothes, womenShoes, accessories, sale, users, userAdd
 }

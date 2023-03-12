@@ -35,5 +35,18 @@ const productModel = new Schema({
     }
 })
 
+const userModel = new Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    cart: {
+        type: Array,
+        required: true
+    }
+})
+
 const product = mongoose.model("products", productModel)
-module.exports = product
+const user = mongoose.model("users", userModel)
+
+module.exports = {product, user}
