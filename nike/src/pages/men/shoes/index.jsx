@@ -21,7 +21,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FiChevronDown } from "react-icons/fi";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/authContext";
 import Head from "next/head";
 
 const invalidImage =
@@ -42,6 +43,7 @@ function MenShoes() {
   const [varData, setVarData] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
+  const { currentUser } = useContext(AuthContext);
 
   const getData = async () => {
     const skeleton = document.querySelector(".skeleton-grid");
@@ -203,18 +205,17 @@ function MenShoes() {
   }
 
   const handleATC = (item) => {
-    const product = { ...item, quantity: 1 };
-    
-    axios.post('https://dead-erin-coral-yoke.cyclic.app/user-add', {
-      email: emailRef.current.value,
-      cart: []
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    var product = { ...item, quantity: 1 };
+    product = { ...product, email: currentUser.email };
+
+    axios
+      .post("https://dead-erin-coral-yoke.cyclic.app/user-add", product)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
