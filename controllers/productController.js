@@ -101,7 +101,7 @@ const userAdd = async (res, req, next) => {
         const data = await productModel.user.insertMany(req)
         console.log("User added")
         console.log(req)
-        res.end()
+        res.send()
     } catch (error) {
         console.log(error)
     }
