@@ -89,8 +89,7 @@ const accessories = async (req, res, next) => {
 
 const users = async (req, res, next) => {
     try {
-        const data = await productModel.user.find()
-        console.log(req.body)
+        const data = await productModel.user.find({"email": `${req.body.email}`})
         res.send(data)
     } catch (error) {
         console.log(error)
