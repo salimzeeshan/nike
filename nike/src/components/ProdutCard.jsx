@@ -26,13 +26,20 @@ function ProdutCard(props) {
       });
 
     console.log(user.cart);
-    console.log(item)
+    console.log(item);
 
     user.cart.map((cartItem) => {
       if (cartItem._id === item._id) {
-          product
-        }
-      }) 
+        axios
+          .post("https://dead-erin-coral-yoke.cyclic.app/qty", {
+            email: product.email,
+            _id: item._id,
+          })
+          .then(function (response) {
+            return response.data[0];
+          });
+      }
+    });
 
     axios
       .post("https://dead-erin-coral-yoke.cyclic.app/add-to-cart", product)

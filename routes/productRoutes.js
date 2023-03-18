@@ -19,6 +19,6 @@ router.get("/accessories", productController.accessories)
 router.post("/users",jsonParser, productController.users)
 router.post("/user-add", jsonParser, productController.userAdd)
 router.post("/add-to-cart", jsonParser, productController.addToCart)
-router.patch("qty", jsonParser, productController.changeQty)
+router.patch("/qty", jsonParser, productController.changeQty)
 
 module.exports = router
