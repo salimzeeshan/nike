@@ -128,11 +128,11 @@ const changeQty = async (req, res, next) => {
       email: `${req.body.email}`,
     });
     var cart = userData.cart;
-    cart = cart.map((cartItem) => {
-      if (cartItem._id === req.body._id) {
-        cartItem.quantity++;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[0]._id === req.body._id) {
+        cart[0].quantity++;
       }
-    });
+    }
     await productModel.user.updateOne(
       { email: `${req.body.email}` },
       { cart: cart }

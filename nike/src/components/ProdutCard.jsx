@@ -29,15 +29,27 @@ function ProdutCard(props) {
     console.log(item);
 
     user.cart.map((cartItem) => {
-      if (cartItem._id === item._id) {
+      console.log(cartItem)
+      if (cartItem._id == product._id) {
         axios
-          .post("https://dead-erin-coral-yoke.cyclic.app/qty", {
+          .patch("https://dead-erin-coral-yoke.cyclic.app/qty", {
             email: product.email,
             _id: item._id,
           })
-          .then(function (response) {
-            return response.data[0];
+          .then(function () {
+            setLoading(false);
+            toast({
+              title: "Product added",
+              description: "We have added the product to your cart.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
           });
+        return;
       }
     });
 
