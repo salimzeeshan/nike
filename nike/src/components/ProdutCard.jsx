@@ -28,9 +28,8 @@ function ProdutCard(props) {
     console.log(user.cart);
     console.log(item);
 
-    user.cart.map((cartItem) => {
-      console.log(cartItem);
-      if (cartItem._id == product._id) {
+    for (let i = 0; i < user.cart.length; i++) {
+      if (cart[i]._id == product._id) {
         axios
           .patch("https://dead-erin-coral-yoke.cyclic.app/qty", {
             email: product.email,
@@ -51,7 +50,7 @@ function ProdutCard(props) {
             console.log(error);
           });
       }
-    });
+    }
 
     axios
       .post("https://dead-erin-coral-yoke.cyclic.app/add-to-cart", product)

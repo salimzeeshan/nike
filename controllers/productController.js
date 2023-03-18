@@ -129,8 +129,8 @@ const changeQty = async (req, res, next) => {
     });
     var cart = userData.cart;
     for (let i = 0; i < cart.length; i++) {
-      if (cart[0]._id === req.body._id) {
-        cart[0].quantity++;
+      if (cart[i]._id === req.body._id) {
+        cart[i].quantity++;
         break;
       }
     }
