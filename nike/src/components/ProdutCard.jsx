@@ -12,11 +12,27 @@ function ProdutCard(props) {
   const { currentUser } = useContext(AuthContext);
   const toast = useToast();
 
-  const handleATC = (item) => {
+  const handleATC = async (item) => {
     var product = { ...item, quantity: 1 };
     product = { ...product, email: currentUser.email };
-    console.log(product);
     setLoading(true);
+
+    const user = await axios
+      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+        email: product.email,
+      })
+      .then(function (response) {
+        return response.data[0];
+      });
+
+    console.log(user.cart);
+    console.log(item)
+
+    user.cart.map((cartItem) => {
+      if (cartItem._id === item._id) {
+          product
+        }
+      }) 
 
     axios
       .post("https://dead-erin-coral-yoke.cyclic.app/add-to-cart", product)
@@ -24,12 +40,11 @@ function ProdutCard(props) {
         setLoading(false);
         toast({
           title: "Product added",
-          description: "We have added the product to your cart",
+          description: "We have added the product to your cart.",
           status: "success",
           duration: 5000,
           isClosable: true,
         });
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -55,6 +70,7 @@ function ProdutCard(props) {
       </Text>
       <Text h={7}>${props.price}</Text>
       <Button
+        isDisabled={props.message === "Sold Out"}
         isLoading={loading}
         style={{ width: "100%", borderRadius: "5px", marginTop: "1.5rem" }}
         color={"white"}
