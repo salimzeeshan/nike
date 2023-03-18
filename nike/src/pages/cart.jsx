@@ -12,6 +12,7 @@ function Cart() {
   const [subtotal, setSubTotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [dataState, setDataState] = useState(false);
 
   const getData = async () => {
     setLoading(false);
@@ -37,9 +38,34 @@ function Cart() {
     setUserCart(cart);
   };
 
+  const getTotal = async () => {
+    const cart = await axios
+      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+        email: currentUser.email,
+      })
+      .then(function (response) {
+        return response.data[0].cart;
+      });
+    var subtotal = 0,
+      tax = 0,
+      total = 0;
+    cart.map((item) => {
+      subtotal += item.price * item.quantity;
+    });
+    tax = subtotal * 0.15;
+    total = subtotal + tax;
+    setTax(tax);
+    setTotal(total);
+    setSubTotal(subtotal);
+  };
+
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    getTotal();
+  }, [dataState]);
 
   var cartItemSkeletons = [];
 
@@ -70,6 +96,7 @@ function Cart() {
             userCart.map((item) => {
               return (
                 <CartItem
+                  setDataState={setDataState}
                   title={item.title}
                   subtitle={item.subtitle}
                   image={item.image}

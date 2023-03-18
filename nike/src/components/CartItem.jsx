@@ -25,6 +25,7 @@ function CartItem(item) {
             _id: cart[i]._id,
           })
           .then(function () {
+            item.setDataState((state) => !state);
             setIncLoading(false);
             setQty(qty + value);
             return;
@@ -54,6 +55,7 @@ function CartItem(item) {
             _id: cart[i]._id,
           })
           .then(function () {
+            item.setDataState((state) => !state);
             setDecLoading(false);
             setQty(qty + value);
             return;
