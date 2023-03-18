@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Divider, Flex, Image, Text } from "@chakra-ui/react";
+import axios from "axios";
 
 function CartItem(item) {
   const [incLoading, setIncLoading] = useState(false);
   const [decLoading, setDecLoading] = useState(false);
+  const [qty, setQty] = useState(item.quantity);
 
-  const incQty = async () => {
+  const incQty = async (value) => {
     setIncLoading(true);
     const cart = await axios
       .post("https://dead-erin-coral-yoke.cyclic.app/users", {
@@ -23,14 +25,8 @@ function CartItem(item) {
             _id: cart[i]._id,
           })
           .then(function () {
-            setIncLoading(true);
-            toast({
-              title: "Product added",
-              description: "We have added the product to your cart.",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-            });
+            setIncLoading(false);
+            setQty(qty + value);
             return;
           })
           .catch(function (error) {
@@ -40,7 +36,7 @@ function CartItem(item) {
     }
   };
 
-  const decQty = async () => {
+  const decQty = async (value) => {
     setDecLoading(true);
     const cart = await axios
       .post("https://dead-erin-coral-yoke.cyclic.app/users", {
@@ -58,14 +54,8 @@ function CartItem(item) {
             _id: cart[i]._id,
           })
           .then(function () {
-            setDecLoading(true);
-            toast({
-              title: "Product added",
-              description: "We have added the product to your cart.",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-            });
+            setDecLoading(false);
+            setQty(qty + value);
             return;
           })
           .catch(function (error) {
@@ -81,33 +71,34 @@ function CartItem(item) {
         <Flex gap={1} w={"70%"} flexDir={"column"}>
           <Flex justifyContent={"space-between"}>
             <Text>{item.title}</Text>
-            <Text>${item.price}</Text>
+            <Text>${item.price * qty}.00</Text>
           </Flex>
           <Text color={"#757575"}>{item.subtitle}</Text>
           <Text color={"#757575"}>{item.color_count}</Text>
-          <Flex mt={4} alignItems={"center"} gap={2}>
+          <Flex mt={4} alignItems={"center"} gap={1}>
+            <Text color={"#757575"}>Quantity: </Text>
             <Button
-              onClick={decQty}
+              fontSize={"md"}
+              isDisabled={qty <= 1}
+              onClick={() => decQty(-1)}
               isLoading={decLoading}
-              style={{
-                borderRadius: "5px",
-              }}
-              color={"white"}
-              _hover={{ bgColor: "gray.600" }}
-              backgroundColor={"black"}
+              color={"black"}
+              _hover={{ bgColor: "transparent", color: "gray.500" }}
+              backgroundColor={"transparent"}
               size={"xs"}>
               -
             </Button>
-            <Text fontSize={"md"}>{item.quantity}</Text>
+            <Text fontSize={"md"}>{qty}</Text>
             <Button
-              onClick={incQty}
+              fontSize={"md"}
+              onClick={() => incQty(1)}
               isLoading={incLoading}
               style={{
-                borderRadius: "5px",
+                borderRadius: "50%",
               }}
-              color={"white"}
-              _hover={{ bgColor: "gray.600" }}
-              backgroundColor={"black"}
+              color={"black"}
+              _hover={{ bgColor: "transparent", color: "gray.500" }}
+              backgroundColor={"transparent"}
               size={"xs"}>
               +
             </Button>

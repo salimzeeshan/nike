@@ -407,7 +407,7 @@
 }
 
 .cart-grid{
-  width: 60%;
+  width: 70%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 70% 30%);
