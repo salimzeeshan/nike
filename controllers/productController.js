@@ -131,6 +131,7 @@ const changeQty = async (req, res, next) => {
     for (let i = 0; i < cart.length; i++) {
       if (cart[0]._id === req.body._id) {
         cart[0].quantity++;
+        break;
       }
     }
     await productModel.user.updateOne(

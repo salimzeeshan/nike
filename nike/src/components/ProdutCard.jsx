@@ -29,7 +29,7 @@ function ProdutCard(props) {
     console.log(item);
 
     user.cart.map((cartItem) => {
-      console.log(cartItem)
+      console.log(cartItem);
       if (cartItem._id == product._id) {
         axios
           .patch("https://dead-erin-coral-yoke.cyclic.app/qty", {
@@ -45,11 +45,11 @@ function ProdutCard(props) {
               duration: 5000,
               isClosable: true,
             });
+            return;
           })
           .catch(function (error) {
             console.log(error);
           });
-        return;
       }
     });
 
