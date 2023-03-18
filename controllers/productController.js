@@ -138,6 +138,7 @@ const changeQty = async (req, res, next) => {
       { email: `${req.body.email}` },
       { cart: cart }
     );
+    res.send({ message: "Product added to cart successfully" });
   } catch (error) {
     console.log(error);
   }

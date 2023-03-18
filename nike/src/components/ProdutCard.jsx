@@ -17,23 +17,23 @@ function ProdutCard(props) {
     product = { ...product, email: currentUser.email };
     setLoading(true);
 
-    const user = await axios
+    const cart = await axios
       .post("https://dead-erin-coral-yoke.cyclic.app/users", {
         email: product.email,
       })
       .then(function (response) {
-        return response.data[0];
+        return response.data[0].cart;
       });
 
-    console.log(user.cart);
+    console.log(cart);
     console.log(item);
 
-    for (let i = 0; i < user.cart.length; i++) {
+    for (let i = 0; i < cart.length; i++) {
       if (cart[i]._id == product._id) {
         axios
           .patch("https://dead-erin-coral-yoke.cyclic.app/qty", {
             email: product.email,
-            _id: item._id,
+            _id: cart[i]._id,
           })
           .then(function () {
             setLoading(false);
@@ -49,6 +49,7 @@ function ProdutCard(props) {
           .catch(function (error) {
             console.log(error);
           });
+        return;
       }
     }
 
