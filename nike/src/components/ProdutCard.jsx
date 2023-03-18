@@ -31,7 +31,7 @@ function ProdutCard(props) {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i]._id == product._id) {
         axios
-          .patch("https://dead-erin-coral-yoke.cyclic.app/qty", {
+          .patch("https://dead-erin-coral-yoke.cyclic.app/inc-qty", {
             email: product.email,
             _id: cart[i]._id,
           })

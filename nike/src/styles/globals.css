@@ -354,7 +354,7 @@
 
 .skeleton-grid{
     display: none;
-  }
+}
   
 .skeleton-active{
     display: grid;
@@ -404,6 +404,23 @@
   top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.cart-grid{
+  width: 60%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 70% 30%);
+  gap: 30px;
+}
+
+.cart-skeleton-active{
+  display: ruby;
+  position: absolute;
+}
+
+.cart-skeleton{
+  display: ruby;
 }
 
 @media only screen and (max-width: 972px){

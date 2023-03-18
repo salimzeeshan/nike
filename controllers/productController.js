@@ -122,7 +122,7 @@ const addToCart = async (req, res, next) => {
   }
 };
 
-const changeQty = async (req, res, next) => {
+const incQty = async (req, res, next) => {
   try {
     const userData = await productModel.user.findOne({
       email: `${req.body.email}`,
@@ -131,6 +131,28 @@ const changeQty = async (req, res, next) => {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i]._id === req.body._id) {
         cart[i].quantity++;
+        break;
+      }
+    }
+    await productModel.user.updateOne(
+      { email: `${req.body.email}` },
+      { cart: cart }
+    );
+    res.send({ message: "Product added to cart successfully" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const decQty = async (req, res, next) => {
+  try {
+    const userData = await productModel.user.findOne({
+      email: `${req.body.email}`,
+    });
+    var cart = userData.cart;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i]._id === req.body._id) {
+        cart[i].quantity--;
         break;
       }
     }
@@ -157,5 +179,6 @@ module.exports = {
   users,
   userAdd,
   addToCart,
-  changeQty,
+  incQty,
+  decQty,
 };
