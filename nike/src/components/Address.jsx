@@ -37,7 +37,7 @@ function Address({ setStep }) {
   };
 
   return (
-    <Box>
+    <Box mb={"50px"}>
       <Stack spacing={4}>
         <HStack>
           <Box>

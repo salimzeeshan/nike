@@ -13,6 +13,17 @@ function ProdutCard(props) {
   const toast = useToast();
 
   const handleATC = async (item) => {
+    if (!currentUser) {
+      toast({
+        title: "Please login!",
+        description: "You need to login to add products to your cart.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      return;
+    }
+
     var product = { ...item, quantity: 1 };
     product = { ...product, email: currentUser.email };
     setLoading(true);

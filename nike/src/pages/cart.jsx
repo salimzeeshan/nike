@@ -4,18 +4,21 @@ import { AuthContext } from "@/context/authContext";
 import {
   Box,
   Button,
+  Center,
   Divider,
   Flex,
   Heading,
+  Image,
   Skeleton,
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Payment from "@/components/Payment";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Cart() {
   const { currentUser } = useContext(AuthContext);
@@ -131,8 +134,44 @@ function Cart() {
     );
   }
 
+  if (userCart && userCart.length === 0) {
+    return (
+      <Flex
+        gap={4}
+        justify={"center"}
+        align={"center"}
+        flexDir={"column"}
+        h={"500px"}>
+        <Head>
+          <title>Empty Cart. Nike Store.</title>
+          <link
+            rel="shortcut icon"
+            href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+          />
+        </Head>
+        <Image
+          opacity={"40%"}
+          w={"70px"}
+          src="https://cdn-icons-png.flaticon.com/512/4555/4555971.png"
+        />
+        <Text color={"gray"} fontSize={"20px"}>
+          It seems like your cart is empty.
+        </Text>
+        <Link href={"/men/shoes"}>
+          <Button
+            color={"white"}
+            _hover={{ bgColor: "gray" }}
+            backgroundColor={"black"}
+            borderRadius={"5px"}>
+            Looking for Shoes?
+          </Button>
+        </Link>
+      </Flex>
+    );
+  }
+
   return (
-    <Box className="cart-container">
+    <Box mt={"50px"} className="cart-container">
       <Box className="cart-grid">
         <Head>
           <title>Cart. Nike Store.</title>

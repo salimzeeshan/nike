@@ -43,7 +43,7 @@ function Footer() {
     <Box
       className={"footer"}
       fontSize={"sm"}
-      mt={"30px"}
+      mt={"120px"}
       width={"100%"}
       bg={useColorModeValue("#111111", "white")}
       color={useColorModeValue("white", "black")}>

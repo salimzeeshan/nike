@@ -467,6 +467,7 @@ function Clothing() {
             {varData.map((item) => {
               return (
                 <ProdutCard
+                  key={item._id}
                   _id={item._id}
                   image={item.image}
                   message={item.message}
@@ -491,6 +492,7 @@ function Clothing() {
             {varData.map((item) => {
               return (
                 <ProdutCard
+                  key={item._id}
                   _id={item._id}
                   image={item.image}
                   message={item.message}
