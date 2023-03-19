@@ -6,6 +6,8 @@ import { BsTrash3 } from "react-icons/bs";
 function CartItem(item) {
   const [incLoading, setIncLoading] = useState(false);
   const [decLoading, setDecLoading] = useState(false);
+  const [delLoading, setDelLoading] = useState(false);
+
   const [qty, setQty] = useState(item.quantity);
 
   const incQty = async (value) => {
@@ -57,7 +59,7 @@ function CartItem(item) {
           })
           .then(function () {
             item.setDataState((state) => !state);
-            setDecLoading(false);
+            setDelLoading(false);
             setQty(qty + value);
             return;
           })
@@ -68,8 +70,22 @@ function CartItem(item) {
     }
   };
 
-    const handleDelete = () => {
-      
+  const handleDelete = () => {
+    setDelLoading(true);
+    axios
+      .patch("https://dead-erin-coral-yoke.cyclic.app/del-qty", {
+        email: item.email,
+        _id: item._id,
+      })
+      .then(function () {
+        item.setDataState((state) => !state);
+        setDelLoading(false);
+        setQty(qty + value);
+        return;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -112,6 +128,7 @@ function CartItem(item) {
             </Button>
           </Flex>
           <Button
+            isLoading={delLoading}
             onClick={handleDelete}
             alignSelf={"flex-end"}
             leftIcon={<BsTrash3 />}

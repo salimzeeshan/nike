@@ -172,9 +172,9 @@ const delQty = async (req, res, next) => {
       email: `${req.body.email}`,
     });
     var cart = userData.cart;
-      cart = cart.filter((item) => {
-        return item._id != req.body._id
-    })
+    cart = cart.filter((item) => {
+      return item._id != req.body._id;
+    });
     await productModel.user.updateOne(
       { email: `${req.body.email}` },
       { cart: cart }
