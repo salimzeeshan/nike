@@ -28,7 +28,7 @@ function Cart() {
   const [step, setStep] = useState(1);
   const [checkLoading, setCheckLoading] = useState(false);
   const [paymentLoading, setPaymentLoading] = useState(false);
-  const [order, setOrder] = useState(true);
+  const [order, setOrder] = useState(false);
   const router = useRouter();
 
   const getData = async () => {
@@ -92,6 +92,9 @@ function Cart() {
   const completeOrder = () => {
     setPaymentLoading(false);
     setOrder(true);
+    axios.patch("https://dead-erin-coral-yoke.cyclic.app/del-cart", {
+      email: currentUser.email,
+    });
     setTimeout(() => {
       router.push("/");
     }, 5000);
@@ -236,6 +239,7 @@ function Cart() {
             </Flex>
             {step === 1 ? (
               <Button
+                mb={"30px"}
                 isLoading={checkLoading}
                 w={"100%"}
                 onClick={hadleCheckout}

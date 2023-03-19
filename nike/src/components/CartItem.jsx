@@ -99,7 +99,7 @@ function CartItem(item) {
           </Flex>
           <Text color={"#757575"}>{item.subtitle}</Text>
           <Text color={"#757575"}>{item.color_count}</Text>
-          <Flex mt={4} alignItems={"center"} gap={1}>
+          <Flex mb={3} mt={4} alignItems={"center"} gap={1}>
             <Text color={"#757575"}>Quantity: </Text>
             <Button
               fontSize={"md"}
@@ -127,18 +127,17 @@ function CartItem(item) {
               +
             </Button>
           </Flex>
-          <Button
+                  <Button
+                      ml={"-15px"}
             isLoading={delLoading}
             onClick={handleDelete}
-            alignSelf={"flex-end"}
-            leftIcon={<BsTrash3 />}
-            size={"sm"}
-            color={"white"}
+            size={"md"}
+            color={"black"}
             _hover={{ bgColor: "gray" }}
-            backgroundColor={"black"}
+            backgroundColor={"transparent"}
             style={{ marginTop: "auto", borderRadius: "5px" }}
             className="black-button">
-            REMOVE
+            <BsTrash3 />
           </Button>
         </Flex>
       </Flex>
