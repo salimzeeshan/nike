@@ -27,12 +27,12 @@ function Cart() {
       tax = 0,
       total = 0;
     cart.map((item) => {
-      subtotal += item.price * item.quantity;
+      subtotal += Math.round(+item.price) * +item.quantity;
     });
     tax = subtotal * 0.15;
     total = subtotal + tax;
-    setTax(tax);
-    setTotal(total);
+    setTax(Math.round(tax));
+    setTotal(Math.round(total));
     setSubTotal(subtotal);
     setLoading(true);
     setUserCart(cart);
@@ -50,12 +50,12 @@ function Cart() {
       tax = 0,
       total = 0;
     cart.map((item) => {
-      subtotal += item.price * item.quantity;
+      subtotal += Math.round(+item.price) * +item.quantity;
     });
     tax = subtotal * 0.15;
     total = subtotal + tax;
-    setTax(tax);
-    setTotal(total);
+    setTax(Math.round(tax));
+    setTotal(Math.round(total));
     setSubTotal(subtotal);
   };
 
@@ -76,73 +76,93 @@ function Cart() {
   }
 
   return (
-    <Box className="cart-grid">
-      <Head>
-        <title>Cart. Nike Store.</title>
-        <link
-          rel="shortcut icon"
-          href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
-        />
-      </Head>
-      <Box>
-        <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
-          Bag
-        </Text>
-        <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
-          {cartItemSkeletons}
-        </div>
-        <Flex flexDir="column">
-          {userCart &&
-            userCart.map((item) => {
-              return (
-                <CartItem
-                  setDataState={setDataState}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  image={item.image}
-                  quantity={item.quantity}
-                  price={item.price}
-                  color_count={item.color_count}
-                  email={currentUser.email}
-                  _id={item._id}
-                />
-              );
-            })}
-        </Flex>
-      </Box>
-      <Box>
-        <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
-          Summary
-        </Text>
-        <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
-          <Skeleton isLoaded={loading} h="1200px" />
-        </div>
+    <Box className="cart-container">
+      <Box className="cart-grid">
+        <Head>
+          <title>Cart. Nike Store.</title>
+          <link
+            rel="shortcut icon"
+            href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+          />
+        </Head>
         <Box>
-          <Flex w={"100%"} flexDir={"column"} gap={3}>
-            <Flex justify={"space-between"}>
-              <Text>Subtotal</Text>
-              <Text>${subtotal}.00</Text>
+          <Text
+            className="bag-lg"
+            mb={"20px"}
+            fontWeight={"bold"}
+            fontSize={"3xl"}>
+            Bag
+          </Text>
+          <Box className="bag-sm">
+            <Text fontWeight={"bold"} fontSize={"3xl"}>
+              Bag
+            </Text>
+            <Flex alignItems={"center"} gap={2}>
+              <Text color={"gray"}>{userCart && userCart.length} items</Text>
+              <Divider
+                h={"15px"}
+                border={".7px solid gray"}
+                orientation="vertical"
+              />
+              <Text>${total}.00</Text>
             </Flex>
-            <Flex justify={"space-between"}>
-              <Text>Estimated Shipping & Handling</Text>
-              <Text>Free</Text>
-            </Flex>
-            <Flex justify={"space-between"}>
-              <Text>Estimated Tax</Text>
-              <Text>${tax}.00</Text>
-            </Flex>
-            <Divider my={3} borderColor="gray.300" />
-            <Flex justify={"space-between"}>
-              <Text>Total</Text>
-              <Text fontWeight={"bold"}>${total}.00</Text>
-            </Flex>
-            <Divider my={3} borderColor="gray.300" />
+          </Box>
+          <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
+            {cartItemSkeletons}
+          </div>
+          <Flex flexDir="column">
+            {userCart &&
+              userCart.map((item) => {
+                return (
+                  <CartItem
+                    setDataState={setDataState}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    image={item.image}
+                    quantity={item.quantity}
+                    price={Math.round(item.price)}
+                    color_count={item.color_count}
+                    email={currentUser.email}
+                    _id={item._id}
+                  />
+                );
+              })}
           </Flex>
-          <button
-            style={{ width: "100%", marginTop: "15px", padding: "15px" }}
-            className="black-button">
-            Checkout
-          </button>
+        </Box>
+        <Box>
+          <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
+            Summary
+          </Text>
+          <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
+            <Skeleton isLoaded={loading} h="1200px" />
+          </div>
+          <Box>
+            <Flex w={"100%"} flexDir={"column"} gap={3}>
+              <Flex justify={"space-between"}>
+                <Text>Subtotal</Text>
+                <Text>${subtotal}.00</Text>
+              </Flex>
+              <Flex justify={"space-between"}>
+                <Text>Estimated Shipping & Handling</Text>
+                <Text>Free</Text>
+              </Flex>
+              <Flex justify={"space-between"}>
+                <Text>Estimated Tax</Text>
+                <Text>${tax}.00</Text>
+              </Flex>
+              <Divider my={3} borderColor="gray.300" />
+              <Flex justify={"space-between"}>
+                <Text>Total</Text>
+                <Text fontWeight={"bold"}>${total}.00</Text>
+              </Flex>
+              <Divider my={3} borderColor="gray.300" />
+            </Flex>
+            <button
+              style={{ width: "100%", marginTop: "15px", padding: "15px" }}
+              className="black-button">
+              Checkout
+            </button>
+          </Box>
         </Box>
       </Box>
     </Box>

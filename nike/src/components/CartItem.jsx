@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Divider, Flex, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
+import { BsTrash3 } from "react-icons/bs";
 
 function CartItem(item) {
   const [incLoading, setIncLoading] = useState(false);
@@ -66,11 +67,16 @@ function CartItem(item) {
       }
     }
   };
+
+    const handleDelete = () => {
+      
+  };
+
   return (
     <Box>
-      <Flex gap={6}>
-        <Image w={"30%"} src={item.image} />
-        <Flex gap={1} w={"70%"} flexDir={"column"}>
+      <Flex gap={4}>
+        <Image className="cart-item-image" src={item.image} />
+        <Flex gap={1} w={"100%"} flexDir={"column"}>
           <Flex justifyContent={"space-between"}>
             <Text>{item.title}</Text>
             <Text>${item.price * qty}.00</Text>
@@ -105,6 +111,18 @@ function CartItem(item) {
               +
             </Button>
           </Flex>
+          <Button
+            onClick={handleDelete}
+            alignSelf={"flex-end"}
+            leftIcon={<BsTrash3 />}
+            size={"sm"}
+            color={"white"}
+            _hover={{ bgColor: "gray" }}
+            backgroundColor={"black"}
+            style={{ marginTop: "auto", borderRadius: "5px" }}
+            className="black-button">
+            REMOVE
+          </Button>
         </Flex>
       </Flex>
       <Divider my={6} />

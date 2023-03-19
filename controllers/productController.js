@@ -138,7 +138,7 @@ const incQty = async (req, res, next) => {
       { email: `${req.body.email}` },
       { cart: cart }
     );
-    res.send({ message: "Product added to cart successfully" });
+    res.send({ message: "Quantity changed successfully" });
   } catch (error) {
     console.log(error);
   }
@@ -160,7 +160,26 @@ const decQty = async (req, res, next) => {
       { email: `${req.body.email}` },
       { cart: cart }
     );
-    res.send({ message: "Product added to cart successfully" });
+    res.send({ message: "Quantity changed successfully" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const delQty = async (req, res, next) => {
+  try {
+    const userData = await productModel.user.findOne({
+      email: `${req.body.email}`,
+    });
+    var cart = userData.cart;
+      cart = cart.filter((item) => {
+        return item._id != req.body._id
+    })
+    await productModel.user.updateOne(
+      { email: `${req.body.email}` },
+      { cart: cart }
+    );
+    res.send({ message: "Product deleted from cart successfully" });
   } catch (error) {
     console.log(error);
   }
@@ -181,4 +200,5 @@ module.exports = {
   addToCart,
   incQty,
   decQty,
+  delQty,
 };

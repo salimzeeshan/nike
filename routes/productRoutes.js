@@ -19,7 +19,10 @@ router.get("/accessories", productController.accessories);
 router.post("/users", jsonParser, productController.users);
 router.post("/user-add", jsonParser, productController.userAdd);
 router.post("/add-to-cart", jsonParser, productController.addToCart);
+
+
 router.patch("/inc-qty", jsonParser, productController.incQty);
 router.patch("/dec-qty", jsonParser, productController.decQty);
+router.patch("del-qty", jsonParser, productController.delQty)
 
 module.exports = router;
