@@ -185,6 +185,18 @@ const delQty = async (req, res, next) => {
   }
 };
 
+const delCart = async (req, res, next) => {
+  try {
+    await productModel.user.updateOne(
+      { email: `${req.body.email}` },
+      { cart: [] }
+    );
+    res.send({ message: "Cart cleared successfully" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   showAll,
   menShoes,
@@ -201,4 +213,5 @@ module.exports = {
   incQty,
   decQty,
   delQty,
+  delCart,
 };

@@ -1,9 +1,21 @@
+import Address from "@/components/Address";
 import CartItem from "@/components/CartItem";
 import { AuthContext } from "@/context/authContext";
-import { Box, Divider, Flex, Skeleton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Skeleton,
+  Text,
+} from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
 import React, { useContext, useEffect, useState } from "react";
+import { CheckCircleIcon } from "@chakra-ui/icons";
+import Payment from "@/components/Payment";
+import { useRouter } from "next/router";
 
 function Cart() {
   const { currentUser } = useContext(AuthContext);
@@ -13,6 +25,11 @@ function Cart() {
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
   const [dataState, setDataState] = useState(false);
+  const [step, setStep] = useState(1);
+  const [checkLoading, setCheckLoading] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [order, setOrder] = useState(true);
+  const router = useRouter();
 
   const getData = async () => {
     setLoading(false);
@@ -57,6 +74,27 @@ function Cart() {
     setTax(Math.round(tax));
     setTotal(Math.round(total));
     setSubTotal(subtotal);
+    setUserCart(cart);
+  };
+
+  const hadleCheckout = () => {
+    setCheckLoading(true);
+    setTimeout(() => {
+      setStep(2);
+    }, 2000);
+  };
+
+  const confirmOrder = () => {
+    setPaymentLoading(true);
+    setTimeout(completeOrder, 3000);
+  };
+
+  const completeOrder = () => {
+    setPaymentLoading(false);
+    setOrder(true);
+    setTimeout(() => {
+      router.push("/");
+    }, 5000);
   };
 
   useEffect(() => {
@@ -75,6 +113,21 @@ function Cart() {
     );
   }
 
+  if (order) {
+    return (
+      <Box mb={"100px"} mt={"100px"} textAlign="center" py={10}>
+        <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
+        <Heading as="h2" size="xl" mt={6} mb={2}>
+          Order placed successfully
+        </Heading>
+        <Text color={"gray.500"}>
+          You will recieve an email with tracking information once your goods
+          have shipped.
+        </Text>
+      </Box>
+    );
+  }
+
   return (
     <Box className="cart-container">
       <Box className="cart-grid">
@@ -85,50 +138,74 @@ function Cart() {
             href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
           />
         </Head>
-        <Box>
-          <Text
-            className="bag-lg"
-            mb={"20px"}
-            fontWeight={"bold"}
-            fontSize={"3xl"}>
-            Bag
-          </Text>
-          <Box className="bag-sm">
-            <Text fontWeight={"bold"} fontSize={"3xl"}>
+        {step === 1 ? (
+          <Box>
+            <Text
+              className="bag-lg"
+              mb={"20px"}
+              fontWeight={"bold"}
+              fontSize={"3xl"}>
               Bag
             </Text>
-            <Flex alignItems={"center"} gap={2}>
-              <Text color={"gray"}>{userCart && userCart.length} items</Text>
-              <Divider
-                h={"15px"}
-                border={".7px solid gray"}
-                orientation="vertical"
-              />
-              <Text>${total}.00</Text>
+            <Box className="bag-sm">
+              <Text fontWeight={"bold"} fontSize={"3xl"}>
+                Bag
+              </Text>
+              <Flex alignItems={"center"} gap={2}>
+                <Text color={"gray"}>{userCart && userCart.length} items</Text>
+                <Divider
+                  h={"15px"}
+                  border={".7px solid gray"}
+                  orientation="vertical"
+                />
+                <Text>${total}.00</Text>
+              </Flex>
+            </Box>
+            <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
+              {cartItemSkeletons}
+            </div>
+            <Flex flexDir="column">
+              {userCart &&
+                userCart.map((item) => {
+                  return (
+                    <CartItem
+                      setDataState={setDataState}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      image={item.image}
+                      quantity={item.quantity}
+                      price={Math.round(item.price)}
+                      color_count={item.color_count}
+                      email={currentUser.email}
+                      _id={item._id}
+                    />
+                  );
+                })}
             </Flex>
           </Box>
-          <div className={loading ? "cart-skeleton-active" : "cart-skeleton"}>
-            {cartItemSkeletons}
-          </div>
-          <Flex flexDir="column">
-            {userCart &&
-              userCart.map((item) => {
-                return (
-                  <CartItem
-                    setDataState={setDataState}
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    image={item.image}
-                    quantity={item.quantity}
-                    price={Math.round(item.price)}
-                    color_count={item.color_count}
-                    email={currentUser.email}
-                    _id={item._id}
-                  />
-                );
-              })}
-          </Flex>
-        </Box>
+        ) : null}
+
+        {step === 2 ? (
+          <Box>
+            <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
+              Delivery Address
+            </Text>
+            <Address paymentLoading={paymentLoading} setStep={setStep} />
+          </Box>
+        ) : null}
+
+        {step === 3 ? (
+          <Box>
+            <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
+              Payment Details
+            </Text>
+            <Payment
+              paymentLoading={paymentLoading}
+              confirmOrder={confirmOrder}
+            />
+          </Box>
+        ) : null}
+
         <Box>
           <Text mb={"20px"} fontWeight={"bold"} fontSize={"3xl"}>
             Summary
@@ -157,11 +234,18 @@ function Cart() {
               </Flex>
               <Divider my={3} borderColor="gray.300" />
             </Flex>
-            <button
-              style={{ width: "100%", marginTop: "15px", padding: "15px" }}
-              className="black-button">
-              Checkout
-            </button>
+            {step === 1 ? (
+              <Button
+                isLoading={checkLoading}
+                w={"100%"}
+                onClick={hadleCheckout}
+                color={"white"}
+                _hover={{ bgColor: "gray" }}
+                backgroundColor={"black"}
+                style={{ marginTop: "20px", borderRadius: "5px" }}>
+                Checkout
+              </Button>
+            ) : null}
           </Box>
         </Box>
       </Box>
