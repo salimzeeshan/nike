@@ -39,7 +39,7 @@ Start the server
 
 ## Tech Stack
 
-**Frontend:** React, Redux, JavaScript
+**Frontend:** React JS, Redux, Next JS, JavaScript, Chakra UI
 
 **Backend:** MongoDB, MongoDB Atlas, Firestore, Cyclic
 
