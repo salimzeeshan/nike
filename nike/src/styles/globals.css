@@ -186,6 +186,10 @@
   gap: 15px;
 }
 
+.grid-three > img{
+width: 100%;
+}
+
 .grid-two{
   width: 30%;
   display: grid;

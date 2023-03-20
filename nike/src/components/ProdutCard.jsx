@@ -83,6 +83,7 @@ function ProdutCard(props) {
   return (
     <Box key={props._id}>
       <Image
+        width={"100%"}
         mb={2}
         src={props.image === invalidImage ? placeholder : props.image}
       />

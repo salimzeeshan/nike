@@ -13,6 +13,7 @@ export default function Home() {
       </Head>
       <Box className="banner-container">
         <Image
+          w={"100%"}
           className="home-banner"
           src="https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/w_890,c_limit/0a5aa15e-e49a-4b32-925c-8a848b234b79/nike-just-do-it.jpg"
         />
