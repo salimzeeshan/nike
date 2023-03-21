@@ -1,5 +1,5 @@
 
-# [Nike (clone)](https://nike-lyart.vercel.app/)
+# [Nike, Inc (clone)](https://nike-lyart.vercel.app/)
 
 Nike, Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services.
 ## Features
