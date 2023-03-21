@@ -8,6 +8,7 @@ Nike, Inc. is an American multinational corporation that is engaged in the desig
 - Complete cart & checkout functionality
 - Sorting & filtering in product pages
 - Dynamic & nested routing
+- Responsive design for Desktop, tablet and mobile screen sizes
 
 
 
