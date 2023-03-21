@@ -7,7 +7,7 @@ const database = process.env.MONGO_DB;
 
 app.use(cors());
 
-const main = () => {
+const main = async () => {
   mongoose.connect(database);
 };
 
