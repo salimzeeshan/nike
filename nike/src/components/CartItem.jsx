@@ -13,7 +13,7 @@ function CartItem(item) {
   const incQty = async (value) => {
     setIncLoading(true);
     const cart = await axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+      .post(`${process.env.PRODUCTS_API}users/`, {
         email: item.email,
       })
       .then(function (response) {
@@ -23,7 +23,7 @@ function CartItem(item) {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i]._id == item._id) {
         axios
-          .patch("https://dead-erin-coral-yoke.cyclic.app/inc-qty", {
+          .patch(`${process.env.PRODUCTS_API}inc-qt/`, {
             email: item.email,
             _id: cart[i]._id,
           })
@@ -43,7 +43,7 @@ function CartItem(item) {
   const decQty = async (value) => {
     setDecLoading(true);
     const cart = await axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+      .post(`${process.env.PRODUCTS_API}users`, {
         email: item.email,
       })
       .then(function (response) {
@@ -53,7 +53,7 @@ function CartItem(item) {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i]._id == item._id) {
         axios
-          .patch("https://dead-erin-coral-yoke.cyclic.app/dec-qty", {
+          .patch(`${process.env.PRODUCTS_API}dec-qty`, {
             email: item.email,
             _id: cart[i]._id,
           })
@@ -73,7 +73,7 @@ function CartItem(item) {
   const handleDelete = () => {
     setDelLoading(true);
     axios
-      .patch("https://dead-erin-coral-yoke.cyclic.app/del-qty", {
+      .patch(`${process.env.PRODUCTS_API}del-qty`, {
         email: item.email,
         _id: item._id,
       })

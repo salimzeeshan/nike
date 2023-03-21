@@ -37,7 +37,7 @@ function Cart() {
   const getData = async () => {
     setLoading(false);
     const cart = await axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+      .post(`${process.env.PRODUCTS_API}users/`, {
         email: currentUser.email,
       })
       .then(function (response) {
@@ -60,7 +60,7 @@ function Cart() {
 
   const getTotal = async () => {
     const cart = await axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/users", {
+      .post(`${process.env.PRODUCTS_API}users/`, {
         email: currentUser.email,
       })
       .then(function (response) {
@@ -95,7 +95,7 @@ function Cart() {
   const completeOrder = () => {
     setPaymentLoading(false);
     setOrder(true);
-    axios.patch("https://dead-erin-coral-yoke.cyclic.app/del-cart", {
+    axios.patch(`${process.env.PRODUCTS_API}del-cart/`, {
       email: currentUser.email,
     });
     setTimeout(() => {

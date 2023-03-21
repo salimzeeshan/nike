@@ -31,7 +31,7 @@ const placeholder = "https://placehold.jp/592x592.png";
 
 const fetchData = async () => {
   var response = await fetch(
-    "https://dead-erin-coral-yoke.cyclic.app/women/shoes"
+    `${process.env.PRODUCTS_API}women/shoes`
   );
   response = await response.json();
   return response;

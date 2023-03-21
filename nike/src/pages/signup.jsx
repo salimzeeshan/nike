@@ -61,7 +61,7 @@ function Signup() {
     }
 
     axios
-      .post("https://dead-erin-coral-yoke.cyclic.app/user-add", {
+      .post(`${process.env.PRODUCTS_API}user-add/`, {
         email: emailRef.current.value,
         cart: [],
       })

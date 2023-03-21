@@ -30,7 +30,7 @@ const invalidImage =
 const placeholder = "https://placehold.jp/592x592.png";
 
 const fetchData = async () => {
-  var response = await fetch("https://dead-erin-coral-yoke.cyclic.app/sale");
+  var response = await fetch(`${process.env.PRODUCTS_API}sale/`);
   response = await response.json();
   return response;
 };
