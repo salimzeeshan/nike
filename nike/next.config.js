@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
 
-module.exports = nextConfig
+const nextConfig = {
+  env: {
+    PRODUCTS_API: process.env.PRODUCTS_API,
+  },
+};
+
+module.exports = nextConfig;
