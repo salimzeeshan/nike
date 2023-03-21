@@ -16,7 +16,6 @@ app.listen(2080, async (req, res) => {
     await main();
     console.log("Connected to the database successfully");
   } catch (error) {
-    console.log("ERRRROROROROROOROROROR")
     console.log(error);
   }
   console.log("Port: 2080");
