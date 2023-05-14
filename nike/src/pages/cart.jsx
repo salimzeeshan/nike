@@ -134,6 +134,42 @@ function Cart() {
     );
   }
 
+  if (!currentUser) {
+    return (
+      <Flex
+        gap={4}
+        justify={"center"}
+        align={"center"}
+        flexDir={"column"}
+        h={"500px"}>
+        <Head>
+          <title>Empty Cart. Nike Store.</title>
+          <link
+            rel="shortcut icon"
+            href="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/nike-1024.png"
+          />
+        </Head>
+        <Image
+          opacity={"40%"}
+          w={"70px"}
+          src="https://cdn-icons-png.flaticon.com/512/4555/4555971.png"
+        />
+        <Text color={"gray"} fontSize={"20px"}>
+          It seems like your cart is empty.
+        </Text>
+        <Link href={"/men/shoes"}>
+          <Button
+            color={"white"}
+            _hover={{ bgColor: "gray" }}
+            backgroundColor={"black"}
+            borderRadius={"5px"}>
+            Looking for Shoes?
+          </Button>
+        </Link>
+      </Flex>
+    );
+  }
+
   if (userCart && userCart.length === 0) {
     return (
       <Flex
