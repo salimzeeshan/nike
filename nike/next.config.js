@@ -2,7 +2,8 @@
 
 const nextConfig = {
   env: {
-    PRODUCTS_API: process.env.PRODUCTS_API,
+    PRODUCTS_API: process.env.REACT_APP_PRODUCTS_API,
+    MONGO_DB: process.env.REACT_APP_MONGO_DB,
   },
 };
 

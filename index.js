@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const router = require("./routes/productRoutes");
+require("dotenv").config();
+
 const database = process.env.MONGO_DB;
 
 app.use(cors());
