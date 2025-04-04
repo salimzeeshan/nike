@@ -33,26 +33,38 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors());
-app.use("/", router);
+app.use(express.json()); // just in case you're sending JSON body
 
-// MongoDB connection (run only once per cold start)
-let isConnected = false;
+let cachedDb = null;
+
 const connectDB = async () => {
-  if (!isConnected) {
-    try {
-      await mongoose.connect(process.env.MONGO_DB);
-      console.log("Connected to the database successfully");
-      isConnected = true;
-    } catch (error) {
-      console.error("Database connection failed:", error);
-    }
+  if (cachedDb) return cachedDb;
+
+  try {
+    const db = await mongoose.connect(process.env.MONGO_DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    cachedDb = db;
+    console.log("✅ Connected to DB");
+    return db;
+  } catch (err) {
+    console.error("❌ DB connection error:", err);
+    throw err;
   }
 };
 
+// Middleware to connect DB before routing
 app.use(async (req, res, next) => {
-  await connectDB();
-  next();
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).send("Database connection failed.");
+  }
 });
 
-// Export handler for Vercel
+app.use("/", router);
+
+// Export the app for Vercel (no app.listen)
 module.exports = app;
