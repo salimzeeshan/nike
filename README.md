@@ -54,7 +54,7 @@ Start the server
 
 **Product Listing**
 
-![Product Listing](https://media.discordapp.net/attachments/1232249762598621248/1365733007821901844/Screenshot_2025-04-26_at_10.25.08_PM.png?ex=680e617b&is=680d0ffb&hm=41eb6fb5c64023281886b438acd7c30c37afd04c77ad61bdf8663035b32c6fd5&=&format=webp&quality=lossless&width=1100&height=592)
+![Product Listing](https://media.discordapp.net/attachments/1232249762598621248/1365733007821901844/Screenshot_2025-04-26_at_10.25.08_PM.png?ex=680e617b&is=680d0ffb&hm=41eb6fb5c64023281886b438acd7c30c37afd04c77ad61bdf8663035b32c6fd5&=&format=webp&quality=lossless&width=3156&height=1698)
 
 **Empty Cart**
 
@@ -68,8 +68,8 @@ Start the server
 
 **Tablet**
 
-![App Screenshot](https://media.discordapp.net/attachments/1232249762598621248/1365734760910950541/Screenshot_2025-04-26_at_10.32.09_PM.png?ex=680e631d&is=680d119d&hm=305dbef459735a0c1f68ebff728c847d28b4a318e9f64c1b198f649e4f48db0e&=&format=webp&quality=lossless&width=656&height=700)
+![App Screenshot](https://media.discordapp.net/attachments/1232249762598621248/1365735583707566110/Screenshot_2025-04-26_at_10.35.27_PM.png?ex=680e63e1&is=680d1261&hm=24c58fe6b35744ace21f676545921406c4dd3687efe20475705bafac1e4a2da8&=&format=webp&quality=lossless&width=1800&height=1906)
 
 **Mobile**
 
-![App Screenshot](https://media.discordapp.net/attachments/1232249762598621248/1365734849876463626/Screenshot_2025-04-26_at_10.32.31_PM.png?ex=680e6332&is=680d11b2&hm=7e462fa2070a2942576cc132f58ee5ff0bc646865e16b3359f5c77d031e834cb&=&format=webp&quality=lossless&width=360&height=700)
+![App Screenshot](https://media.discordapp.net/attachments/1232249762598621248/1365735711910662164/Screenshot_2025-04-26_at_10.36.00_PM.png?ex=680e63ff&is=680d127f&hm=4889b260af0b0539231a47fdd20eff7e3b273bf98ed7d80fd3444bc21ae4a250&=&format=webp&quality=lossless&width=990&height=1906)
