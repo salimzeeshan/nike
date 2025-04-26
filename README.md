@@ -73,3 +73,18 @@ Start the server
 **Mobile**
 
 ![App Screenshot](https://media.discordapp.net/attachments/1232249762598621248/1365735711910662164/Screenshot_2025-04-26_at_10.36.00_PM.png?ex=680e63ff&is=680d127f&hm=4889b260af0b0539231a47fdd20eff7e3b273bf98ed7d80fd3444bc21ae4a250&=&format=webp&quality=lossless&width=990&height=1906)
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some feature'`)
+5. Push to the branch (`git push origin feature-branch`)
+6. Open a pull request
+
+---
+
+Developed by [Mohammad Zeeshan Salim](https://salimzeeshan.github.io/)
