@@ -52,7 +52,7 @@ Start the server
 
 ![Home Page](https://media.discordapp.net/attachments/1232249762598621248/1365732659522965677/Screenshot_2025-04-26_at_10.23.42_PM.png?ex=680e6128&is=680d0fa8&hm=1a4381538a3eeec3d389311b45c559c9f78a7183f1ea5a2e4dd68e24400528e2&=&format=webp&quality=lossless&width=3156&height=1698)
 
-**Product Listin**
+**Product Listing**
 
 ![Product Listing](https://media.discordapp.net/attachments/1232249762598621248/1365733007821901844/Screenshot_2025-04-26_at_10.25.08_PM.png?ex=680e617b&is=680d0ffb&hm=41eb6fb5c64023281886b438acd7c30c37afd04c77ad61bdf8663035b32c6fd5&=&format=webp&quality=lossless&width=1100&height=592)
 
